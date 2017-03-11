@@ -11,8 +11,6 @@ supports 'ubuntu', '= 16.04'
 
 supports 'centos', '= 7.2'
 
-depends 'kagent'
-depends 'hops'
 depends 'magic_shell'
 
 recipe "conda::install", "Installs  anaconda"

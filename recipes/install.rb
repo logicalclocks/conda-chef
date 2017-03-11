@@ -3,7 +3,7 @@ if node.kernel.machine != 'x86_64'
 end
 
 group node.conda.group
-user node.conda.owner do
+user node.conda.user do
   gid node.conda.group
 end
 
@@ -11,7 +11,7 @@ end
 remote_file installer_path do
   source node.conda.url
 #  checksum installer_checksum
-  user node.conda.owner
+  user node.conda.user
   group node.conda.group
   mode 0755
   action :create_if_missing
@@ -20,7 +20,7 @@ end
 script =  File.basename(node.conda.url)
 
 bash 'run_conda_installer' do
-  user node.conda.owner
+  user node.conda.user
   group node.conda.group
   code <<-EOF
    #{Chef::Config[:file_cache_path]}/#{script} -b -p #{node.conda.home}
@@ -30,8 +30,8 @@ end
 
 
 link node.conda.base_dir do
-  owner node.hops.user
-  group node.hops.group
+  owner node.conda.user
+  group node.conda.group
   to node.conda.home
 end
 

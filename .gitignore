@@ -1,6 +1,7 @@
 .vagrant
 /cookbooks
 
+.gitkeep
 *~
 # Bundler
 bin/*
