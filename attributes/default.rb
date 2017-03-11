@@ -6,7 +6,7 @@ default.conda.python = '2'
 
 default.conda.url = "https://repo.continuum.io/archive/Conda#{node.conda.python}-#{node.conda.version}-Linux-x86_64.sh"
 
-default.conda.owner = node.install.user.empty? ? node.hops.user : node.install.user
+default.conda.owner = node.install.user.empty? ? node.hops.yarn.user : node.install.user
 default.conda.group = node.install.user.empty? ? node.hops.group : node.install.user
 
 default.conda.dir = '/srv'
