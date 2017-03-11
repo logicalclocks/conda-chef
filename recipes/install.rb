@@ -7,8 +7,8 @@ user node.conda.user do
   gid node.conda.group
 end
 
-script =  File.basename(node.conda.url)
-installer_path = #{Chef::Config[:file_cache_path]}/#{script}
+script = File.basename(node.conda.url)
+installer_path = "#{Chef::Config[:file_cache_path]}/#{script}"
   
 remote_file installer_path do
   source node.conda.url
