@@ -7,6 +7,15 @@ user node.conda.user do
   gid node.conda.group
 end
 
+directory node.conda.dir  do
+  owner node.conda.user
+  group node.conda.group
+  mode "755"
+  action :create
+  not_if { File.directory?("#{node.conda.dir}") }
+end
+
+
 script = File.basename(node.conda.url)
 installer_path = "#{Chef::Config[:file_cache_path]}/#{script}"
   
