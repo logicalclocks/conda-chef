@@ -7,7 +7,9 @@ user node.conda.user do
   gid node.conda.group
 end
 
-
+script =  File.basename(node.conda.url)
+installer_path = #{Chef::Config[:file_cache_path]}/#{script}
+  
 remote_file installer_path do
   source node.conda.url
 #  checksum installer_checksum
@@ -17,13 +19,11 @@ remote_file installer_path do
   action :create_if_missing
 end
 
-script =  File.basename(node.conda.url)
-
 bash 'run_conda_installer' do
   user node.conda.user
   group node.conda.group
   code <<-EOF
-   #{Chef::Config[:file_cache_path]}/#{script} -b -p #{node.conda.home}
+   #{installer_path} -b -p #{node.conda.home}
   EOF
   not_if { File.directory?(node.conda.home) }
 end
