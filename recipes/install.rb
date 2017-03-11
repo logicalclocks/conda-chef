@@ -1,5 +1,5 @@
 if node.kernel.machine != 'x86_64'
-   Chef::Log.fatal!("Unrecognized node.kernel.machine=#{node.kernel.machine}; please explicitly node.anaconda.flavor", 1)
+   Chef::Log.fatal!("Unrecognized node.kernel.machine=#{node.kernel.machine}; Only x86_64", 1)
 end
 
 group node.conda.group

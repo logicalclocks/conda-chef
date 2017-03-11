@@ -11,12 +11,12 @@ supports 'ubuntu', '= 16.04'
 
 supports 'centos', '= 7.2'
 
-
-#depends 'bzip2'
-#depends 'tar'
 depends 'kagent'
 depends 'hops'
 depends 'magic_shell'
+
+recipe "conda::install", "Installs  anaconda"
+recipe "conda::default", "Configures anaconda"
 
 
 attribute "conda/dir",
