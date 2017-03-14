@@ -10,7 +10,7 @@ default.conda.url                          = node.attribute?(:download_url) ? no
 default.conda.user                         = node.install.user.empty? ? "anaconda" : node.install.user
 default.conda.group                        = node.install.user.empty? ? "anaconda" : node.install.user
 
-default.conda.dir                          = node.install.dir.empty? ? "/srv/anaconda" : node.install.dir + "/anaconda"
+default.conda.dir                          = node.install.dir.empty? ? "/srv" : node.install.dir 
 
 default.conda.home                         = "#{node.conda.dir}/anaconda-#{node.conda.python}-#{node.conda.version}"
 default.conda.base_dir                     = "#{node.conda.dir}/anaconda"
