@@ -12,9 +12,11 @@ supports 'ubuntu', '= 16.04'
 supports 'centos', '= 7.2'
 
 depends 'magic_shell'
+depends 'apache2'
 
 recipe "conda::install", "Installs  anaconda"
 recipe "conda::default", "Configures anaconda"
+recipe "conda::repo", "Installs a conda repo on an apache server"
 
 
 attribute "conda/dir",
