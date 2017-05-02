@@ -1,5 +1,3 @@
 dependencies: 
   - recipe: conda::install
-    local:  
-      - hops::install
   - recipe: conda::default
