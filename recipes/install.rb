@@ -5,6 +5,11 @@ end
 group node["conda"]["group"]
 user node["conda"]["user"] do
   gid node["conda"]["group"]
+  manage_home true
+  home "/home/#{node["conda"]["user"]}"
+  shell "/bin/bash"
+  action :create  
+  not_if "getent passwd #{node["conda"]["user"]}"
 end
 
 directory node["conda"]["dir"]  do
