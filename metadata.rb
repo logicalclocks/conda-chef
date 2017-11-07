@@ -1,6 +1,6 @@
-name              'conda'
-maintainer        'Jim Dowling'
-maintainer_email  'jdowling@sics.se'
+name              "conda"
+maintainer        "Jim Dowling"
+maintainer_email  'jdowling@kth.se'
 license           'Apache v.2'
 description       'Installs/Configures conda'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
@@ -14,8 +14,8 @@ supports 'centos', '= 7.2'
 depends 'magic_shell'
 depends 'apache2'
 
-recipe "conda::install", "Installs  anaconda"
-recipe "conda::default", "Configures anaconda"
+recipe "conda::install", "Installs  conda"
+recipe "conda::default", "Configures conda"
 recipe "conda::repo", "Installs a conda repo on an apache server"
 
 
