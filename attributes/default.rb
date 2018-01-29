@@ -1,7 +1,7 @@
 default["install"]["dir"]                        = ""
 default["install"]["user"]                       = ""
 
-default["conda"]["version"]                      = '4.3.1'
+default["conda"]["version"]                      = '5.0.1'
 # the version of python: either '2' or '3'
 default["conda"]["python"]                       = '2'
 
