@@ -8,7 +8,7 @@ user node["conda"]["user"] do
   manage_home true
   home "/home/#{node["conda"]["user"]}"
   shell "/bin/bash"
-  action :create  
+  action :create
   not_if "getent passwd #{node["conda"]["user"]}"
 end
 
@@ -17,13 +17,12 @@ directory node["conda"]["dir"]  do
   group node["conda"]["group"]
   mode "755"
   action :create
-  not_if { File.directory?("#{node["conda.dir"]}") }
+  not_if { File.directory?(node["conda"]["dir"]) }
 end
-
 
 script = File.basename(node["conda"]["url"])
 installer_path = "#{Chef::Config[:file_cache_path]}/#{script}"
-  
+
 remote_file installer_path do
   source node["conda"]["url"]
 #  checksum installer_checksum
@@ -41,7 +40,6 @@ bash 'run_conda_installer' do
   EOF
   not_if { File.directory?(node["conda"]["home"]) }
 end
-
 
 link node["conda"]["base_dir"] do
   owner node["conda"]["user"]

@@ -14,5 +14,3 @@ default["conda"]["dir"]                          = node["install"]["dir"].empty?
 
 default["conda"]["home"]                         = "#{node["conda"]["dir"]}/anaconda-#{node["conda"]["python"]}-#{node["conda"]["version"]}"
 default["conda"]["base_dir"]                     = "#{node["conda"]["dir"]}/anaconda"
-
-default["conda"]["accept_license"]               = 'no'
