@@ -49,24 +49,26 @@ link node['conda']['base_dir'] do
   to node['conda']['home']
 end
 
-
-bash 'run_conda_installer' do
-  user node['conda']['user']
-  group node['conda']['group']
-  code <<-EOF
+dirs=%{ envs pkgs lib }
+for d in dirs
+  bash 'run_conda_installer_#{d}' do
+    user node['conda']['user']
+    group node['conda']['group']
+    code <<-EOF
    set -e
-   if [ ! -d #{node['conda']['dir']}/envs ] ; then
-       mv #{node['conda']['home']}/envs #{node['conda']['dir']}
+   if [ ! -d #{node['conda']['dir']}/#{d} ] ; then
+       mv #{node['conda']['home']}/#{d} #{node['conda']['dir']}
+   else
+      rm -rf #{node['conda']['home']}/#{d}
    fi
   EOF
+  end
+  link "#{node['conda']['home']}/#{d}" do
+    owner node['conda']['user']
+    group node['conda']['group']
+    to "#{node['conda']['dir']}/#{d}"
+  end
 end
-
-link "#{node['conda']['home']}/envs" do
-  owner node['conda']['user']
-  group node['conda']['group']
-  to "#{node['conda']['dir']}/envs"
-end
-
 
 magic_shell_environment 'PATH' do
   value "$PATH:#{node['conda']['base_dir']}/bin"
