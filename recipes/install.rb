@@ -19,7 +19,6 @@ directory node['conda']['dir']  do
   group node['conda']['group']
   mode '755'
   action :create
-  not_if { File.directory?(node['conda']['dir']) }
 end
 
 script = File.basename(node['conda']['url'])
