@@ -38,3 +38,11 @@ attribute "install/dir",
 attribute "install/user",
           :description => "User to install the services as",
           :type => "string"
+
+attribute "conda/mirror_list",
+          :description => "comma separated list of anaconda mirrors",
+          :type => "string"
+
+attribute "conda/use_defaults",
+          :description => "whether or not to add the defaults mirrors to the channels list (default yes)",
+          :type => "string"
