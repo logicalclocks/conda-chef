@@ -34,6 +34,14 @@ remote_file installer_path do
   action :create_if_missing
 end
 
+# Template condarc to set mirrors/channels
+template "/home/#{node['conda']['user']}/.condarc" do
+  source "condarc.erb"
+  user node['conda']['user']
+  group node['conda']['group']
+  mode 0755
+end
+
 bash 'run_conda_installer' do
   user node['conda']['user']
   group node['conda']['group']
