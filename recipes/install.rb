@@ -81,3 +81,17 @@ end
 magic_shell_environment 'PATH' do
   value "$PATH:#{node['conda']['base_dir']}/bin"
 end
+
+
+ulimit_domain node['conda']['user'] do
+  rule do
+    item :nice
+    type :hard
+    value -10
+  end
+  rule do
+    item :nice
+    type :soft
+    value -10
+  end
+end
