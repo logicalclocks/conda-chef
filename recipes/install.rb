@@ -67,7 +67,7 @@ for d in dirs do
    if [ ! -d #{node['conda']['dir']}/#{d} ] ; then
        mv #{node['conda']['home']}/#{d} #{node['conda']['dir']}
    else
-      rm -rf #{node['conda']['home']}/#{d}
+      rm -f #{node['conda']['home']}/#{d}
    fi
   EOF
   end
