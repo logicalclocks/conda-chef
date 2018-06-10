@@ -57,7 +57,7 @@ link node['conda']['base_dir'] do
   to node['conda']['home']
 end
 
-dirs=%w{ envs pkgs lib }
+dirs=%w{ envs pkgs }
 for d in dirs do
   bash 'run_conda_installer_#{d}' do
     user node['conda']['user']
