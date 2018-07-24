@@ -60,13 +60,13 @@ end
 dirs=%w{ envs pkgs lib }
 for d in dirs do
   bash 'run_conda_installer_#{d}' do
-    user node['conda']['user']
-    group node['conda']['group']
+    user "root"
     code <<-EOF
    set -e
-   if [ ! -d #{node['conda']['dir']}/#{d} ] ; then
+   if [ ! -d #{node['conda']['dir']}/#{d} ] ; then    # if a new install, mv out envs/libs to keep when upgrading
        mv #{node['conda']['home']}/#{d} #{node['conda']['dir']}
-   else
+       chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['dir']}/#{d}
+   else  # this is an upgrade, keep existing installed libs/envs/etc
       rm -rf #{node['conda']['home']}/#{d}
    fi
   EOF
