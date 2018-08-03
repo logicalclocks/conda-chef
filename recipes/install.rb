@@ -11,6 +11,7 @@ user node['conda']['user'] do
   home "/home/#{node['conda']['user']}"
   shell "/bin/bash"
   action :create
+  system true
   not_if "getent passwd #{node['conda']['user']}"
 end
 
