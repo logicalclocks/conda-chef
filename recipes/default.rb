@@ -25,10 +25,10 @@ bash "update_conda" do
   group node['conda']['group']
   environment ({'HOME' => "/home/#{node['conda']['user']}"})
   cwd "/home/#{node['conda']['user']}"
-  retries 3
+  retries 1
   retry_delay 10
   code <<-EOF
-    set -e
+    #set -e
     #{node['conda']['base_dir']}/bin/conda update conda -y -q
     #{node['conda']['base_dir']}/bin/conda update anaconda -y -q
   EOF
