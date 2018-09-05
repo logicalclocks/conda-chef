@@ -47,3 +47,11 @@ attribute "conda/mirror_list",
 attribute "conda/use_defaults",
           :description => "whether or not to add the defaults mirrors to the channels list (default yes)",
           :type => "string"
+
+attribute "conda/provided_lib_names",
+          :description => "Comma separated list of provided library names we install for users",
+          :type => "string"
+
+attribute "conda/preinstalled_lib_names",
+          :description => "Comma separated list of preinstalled libraries users should not touch",
+          :type => "string"
