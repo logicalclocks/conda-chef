@@ -20,6 +20,6 @@ default['conda']['mirror_list']                  = ""
 default['conda']['use_defaults']                 = "true"
 
 # Comma separated list of provided library names we install for users
-default['conda']['provided_lib_names']           = "hops, tfspark, pandas, tensorflow-serving-api, horovod, hopsfacets, mmlspark, numpy"
+default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, horovod, hopsfacets, mmlspark, numpy"
 # Comma separated list of preinstalled libraries users should not touch
 default['conda']['preinstalled_lib_names']       = "tensorflow-gpu, tensorflow, pydoop, pyspark, tensorboard"
