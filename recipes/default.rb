@@ -62,3 +62,25 @@ bash "create_base" do
   EOF
   not_if "test -d #{node['conda']['base_dir']}/envs/#{node['conda']['user']}", :user => node['conda']['user']
 end
+
+bash "create_hops-system_env" do
+  user node['conda']['user']
+  group node['conda']['group']
+  environment ({'HOME' => "/home/#{node['conda']['user']}"})
+  cwd "/home/#{node['conda']['user']}"
+  code <<-EOF
+    #{node['conda']['base_dir']}/bin/conda create -q -y -n hops-system python=2.7.15
+    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q --no-cache-dir --upgrade pip
+    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q --no-cache-dir pydoop==1.2.0
+  EOF
+  not_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
+end
+
+bash "install_kagent_utils" do
+  user 'root'
+  group 'root'
+  code <<-EOF
+    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q --no-cache-dir #{node["kagent"]["home"]}/kagent_utils
+  EOF
+  not_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
+end
