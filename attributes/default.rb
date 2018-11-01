@@ -19,6 +19,9 @@ default['conda']['base_dir']                     = "#{node['conda']['dir']}/anac
 default['conda']['mirror_list']                  = ""
 default['conda']['use_defaults']                 = "true"
 
+default["conda"]["default_libs"]                   = %w{ }
+#numpy hdfs3 scikit-learn matplotlib pandas
+
 # Comma separated list of provided library names we install for users
 default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, mmlspark, numpy"
 # Comma separated list of preinstalled libraries users should not touch

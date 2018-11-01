@@ -96,3 +96,10 @@ ulimit_domain node['conda']['user'] do
     value -10
   end
 end
+
+template "/home/#{node['conda']['user']}/hops-system-environment.yml" do
+  source "hops-system-environment.yml.erb"
+  user node['conda']['user']
+  group node['conda']['group']
+  mode 0750
+end
