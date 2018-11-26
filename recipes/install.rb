@@ -15,6 +15,14 @@ user node['conda']['user'] do
   not_if "getent passwd #{node['conda']['user']}"
 end
 
+directory node['install']['dir'] do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+  not_if { ::File.directory?(node['install']['dir']) }
+end
+
 directory node['conda']['dir']  do
   owner node['conda']['user']
   group node['conda']['group']
