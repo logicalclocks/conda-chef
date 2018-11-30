@@ -19,6 +19,7 @@ directory node['conda']['dir']  do
   owner node['conda']['user']
   group node['conda']['group']
   mode '755'
+  recursive true
   action :create
   not_if { File.directory?(node['conda']['dir']) }
 end

@@ -80,6 +80,17 @@ bash "create_base" do
   not_if "test -d #{node['conda']['base_dir']}/envs/#{node['conda']['user']}", :user => node['conda']['user']
 end
 
+## First we delete the current hops-system Anaconda environment, if it exists
+bash "remove_hops-system_env" do
+  user 'root'
+  group 'root'
+  cwd "/home/#{node['conda']['user']}"
+  code <<-EOF
+    #{node['conda']['base_dir']}/bin/conda env remove -y -q -n hops-system
+  EOF
+  only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
+end
+
 ## Bash resource in Chef is weird! It does not login
 ## as the user specifed in 'user' property, nor setup
 ## the correct environment variables such as USER,
