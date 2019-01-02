@@ -11,10 +11,10 @@ default["install"]["dir"]                        = "/srv/hops"
 default["install"]["current_version"]            = ""
 
 # Update target
-default["install"]["version"]                    = "0.7.0-SNAPSHOT"
+default["install"]["version"]                    = "0.8.0-SNAPSHOT"
 
 # List of released versions
-default["install"]["versions"]                   = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1"
+default["install"]["versions"]                     = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0"
 
 default['install']['user']                       = ""
 
