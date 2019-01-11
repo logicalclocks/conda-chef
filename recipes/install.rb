@@ -52,7 +52,7 @@ template "/home/#{node['conda']['user']}/.condarc" do
   mode 0755
 end
 
-if !node['pypi']['index'].eql("") || !node['pypi']['index-url'].eql("")
+if !node['pypi']['index'].eql?("") || !node['pypi']['index-url'].eql?("")
   # PIP mirror configuration
   directory "#{::Dir.home(node['conda']['user'])}/.pip" do 
     user node['conda']['user']
