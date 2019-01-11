@@ -1,0 +1,7 @@
+[global]
+<% if not node['pypi']['index'].eql?("") %>
+index = <%= node['pypi']['index'] %>
+<% end -%>
+<% if not node['pypi']['index-url'].eql?("") %>
+index-url = <%= node['pypi']['index-url'] %>
+<% end -%>
