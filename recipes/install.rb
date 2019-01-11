@@ -54,13 +54,13 @@ end
 
 if !node['pypi']['index'].eql?("") || !node['pypi']['index-url'].eql?("")
   # PIP mirror configuration
-  directory "#{::Dir.home(node['conda']['user'])}/.pip" do 
+  directory "/home/#{node['conda']['user']}/.pip" do 
     user node['conda']['user']
     group node['conda']['group']
     action :create
   end
 
-  template "#{::Dir.home(node['conda']['user'])}/.pip/pip.conf" do 
+  template "/home/#{node['conda']['user']}/.pip/pip.conf" do 
     source "pip.conf.erb"
     user node['conda']['user']
     group node['conda']['group']
