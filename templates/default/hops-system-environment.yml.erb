@@ -3,7 +3,9 @@ channels:
   <% @conda_mirrors.each do |conda_mirror| -%>
   - <%= conda_mirror %>
   <% end -%>
+  <% if node['conda']['use_defaults'].eql?("true") %>
   - defaults
+  <% end -%>
 dependencies:
   - ca-certificates=2018.03.07=0
   - certifi=2018.10.15=py27_0
