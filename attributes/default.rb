@@ -19,6 +19,10 @@ default['conda']['base_dir']                     = "#{node['conda']['dir']}/anac
 default['conda']['mirror_list']                  = ""
 default['conda']['use_defaults']                 = "true"
 
+default['pypi']['index']                         = ""
+default['pypi']['index-url']                     = ""
+default['pypi']['trusted-host']                  = ""
+
 default["conda"]["default_libs"]                   = %w{ }
 #numpy hdfs3 scikit-learn matplotlib pandas
 
