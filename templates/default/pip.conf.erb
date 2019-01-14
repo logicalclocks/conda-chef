@@ -5,3 +5,6 @@ index = <%= node['pypi']['index'] %>
 <% if not node['pypi']['index-url'].eql?("") %>
 index-url = <%= node['pypi']['index-url'] %>
 <% end -%>
+<% if not node['pypi']['trusted-host'].eql?("") %>
+trusted-host = <%= node['pypi']['trusted-host'] %>
+<% end -%>

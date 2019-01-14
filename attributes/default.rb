@@ -21,6 +21,7 @@ default['conda']['use_defaults']                 = "true"
 
 default['pypi']['index']                         = ""
 default['pypi']['index-url']                     = ""
+default['pypi']['trusted-host']                  = ""
 
 default["conda"]["default_libs"]                   = %w{ }
 #numpy hdfs3 scikit-learn matplotlib pandas

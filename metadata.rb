@@ -59,6 +59,10 @@ attribute "pypi/index-url",
           :description => "Mirror endpoint for PIP install and PIP actions which use PEP503 compliant API",
           :type => "string"
 
+attribute "pypi/trusted-host",
+          :description => "Trusted host for non https pypi mirrors",
+          :type => "string"
+
 attribute "conda/provided_lib_names",
           :description => "Comma separated list of provided library names we install for users",
           :type => "string"
