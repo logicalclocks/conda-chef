@@ -30,3 +30,7 @@ default["conda"]["default_libs"]                   = %w{ }
 default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, mmlspark, numpy"
 # Comma separated list of preinstalled libraries users should not touch
 default['conda']['preinstalled_lib_names']       = "tensorflow-gpu, tensorflow, pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
+
+default["java"]["install_flavor"]                  = "openjdk"
+default['java']['set_etc_environment']             = true
+default["java"]["jdk_version"]                     = 8

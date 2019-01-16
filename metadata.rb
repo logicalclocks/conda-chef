@@ -13,6 +13,7 @@ supports 'centos', '= 7.2'
 depends           'magic_shell'
 depends           'apache2'
 depends           'ulimit'
+depends           'java'
 
 recipe "conda::install", "Installs  conda"
 recipe "conda::default", "Configures conda"
