@@ -8,12 +8,12 @@ version           "0.9.0"
 
 supports 'ubuntu', '= 14.04'
 supports 'ubuntu', '= 16.04'
-
 supports 'centos', '= 7.2'
 
 depends           'magic_shell'
 depends           'apache2'
 depends           'ulimit'
+depends           'java'
 
 recipe "conda::install", "Installs  conda"
 recipe "conda::default", "Configures conda"
@@ -78,6 +78,18 @@ attribute "conda/use_defaults",
 
 attribute "conda/default_libs",
           :description => "Space separated list of libraries to be installed in Conda root environment",
+          :type => "string"
+
+attribute "pypi/index",
+          :description => "Mirror endpoint for PIP search",
+          :type => "string"
+
+attribute "pypi/index-url",
+          :description => "Mirror endpoint for PIP install and PIP actions which use PEP503 compliant API",
+          :type => "string"
+
+attribute "pypi/trusted-host",
+          :description => "Trusted host for non https pypi mirrors",
           :type => "string"
 
 attribute "conda/provided_lib_names",

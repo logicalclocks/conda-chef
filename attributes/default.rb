@@ -36,6 +36,10 @@ default['conda']['base_dir']                     = "#{node['conda']['dir']}/anac
 default['conda']['mirror_list']                  = ""
 default['conda']['use_defaults']                 = "true"
 
+default['pypi']['index']                         = ""
+default['pypi']['index-url']                     = ""
+default['pypi']['trusted-host']                  = ""
+
 default["conda"]["default_libs"]                   = %w{ }
 #numpy hdfs3 scikit-learn matplotlib pandas
 
@@ -43,3 +47,7 @@ default["conda"]["default_libs"]                   = %w{ }
 default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, mmlspark, numpy"
 # Comma separated list of preinstalled libraries users should not touch
 default['conda']['preinstalled_lib_names']       = "tensorflow-gpu, tensorflow, pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
+
+default["java"]["install_flavor"]                  = "openjdk"
+default['java']['set_etc_environment']             = true
+default["java"]["jdk_version"]                     = 8
