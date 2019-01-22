@@ -42,6 +42,7 @@ end
 bash "update_conda" do
   user node['conda']['user']
   group node['conda']['group']
+  umask "022"
   environment ({'HOME' => "/home/#{node['conda']['user']}"})
   cwd "/home/#{node['conda']['user']}"
   retries 1
@@ -60,6 +61,7 @@ for lib in node["conda"]["default_libs"] do
   bash "install_anconda_default_libs" do
     user node['conda']['user']
     group node['conda']['group']
+    umask "022"
     environment ({'HOME' => "/home/#{node['conda']['user']}"})
     cwd "/home/#{node['conda']['user']}"
     code <<-EOF
@@ -74,6 +76,7 @@ end
 bash "create_base" do
   user node['conda']['user']
   group node['conda']['group']
+  umask "022"
   environment ({'HOME' => "/home/#{node['conda']['user']}"})
   cwd "/home/#{node['conda']['user']}"
   code <<-EOF
@@ -86,6 +89,7 @@ end
 bash "remove_hops-system_env" do
   user 'root'
   group 'root'
+  umask "022"
   cwd "/home/#{node['conda']['user']}"
   code <<-EOF
     #{node['conda']['base_dir']}/bin/conda env remove -y -q -n hops-system
@@ -105,6 +109,7 @@ end
 bash "create_hops-system_env" do
   user 'root'
   group 'root'
+  umask "022"
   cwd "/home/#{node['conda']['user']}"
   code <<-EOF
     su #{node['conda']['user']} -c "HADOOP_HOME=#{node['install']['dir']}/hadoop \
@@ -116,6 +121,7 @@ end
 bash "update_pip_hops-system_env" do
   user node['conda']['user']
   group node['conda']['group']
+  umask "022"
   environment ({'HOME' => "/home/#{node['conda']['user']}"})
   cwd "/home/#{node['conda']['user']}"
   code <<-EOF
@@ -129,6 +135,7 @@ end
 bash "install_kagent_utils" do
   user 'root'
   group 'root'
+  umask "022"
   code <<-EOF
     #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q --no-cache-dir #{Chef::Config['file_cache_path']}/kagent_utils
     chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['base_dir']}/envs/hops-system
