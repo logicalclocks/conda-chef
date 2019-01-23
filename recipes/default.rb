@@ -80,7 +80,7 @@ bash "install_kagent_utils" do
   user 'root'
   group 'root'
   code <<-EOF
-    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q --no-cache-dir #{node["kagent"]["home"]}/kagent_utils
+    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q #{node["kagent"]["home"]}/kagent_utils
   EOF
   not_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
 end
