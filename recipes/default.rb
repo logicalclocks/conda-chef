@@ -130,7 +130,7 @@ bash "install_kagent_utils" do
   user 'root'
   group 'root'
   code <<-EOF
-    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q --no-cache-dir #{Chef::Config['file_cache_path']}/kagent_utils
+    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install -q  #{Chef::Config['file_cache_path']}/kagent_utils
     chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['base_dir']}/envs/hops-system
   EOF
   only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
