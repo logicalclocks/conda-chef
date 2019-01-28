@@ -19,6 +19,13 @@ recipe "conda::install", "Installs  conda"
 recipe "conda::default", "Configures conda"
 recipe "conda::repo", "Installs a conda repo on an apache server"
 
+################################ Begin installation wide attributes ########################################
+
+attribute "rhel/epel",
+          :description => "Install epel-release package on rhel/centos",
+          :type => 'string'
+
+################################ end installation wide attributes   ########################################
 
 attribute "conda/dir",
           :description => "Base installation directory for Conda",
