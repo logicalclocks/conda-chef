@@ -27,11 +27,10 @@ default["java"]["jdk_version"]                     = 8
 
 default["rhel"]["epel"]                            = true 
 
-############################ END GLOBAL ATTRIBUTES #######################################
 
-default['install']['dir']                        = ""
->>>>>>> 88b6890a35c7a2b571a724bc7cfe2f616c5e26f8
-default['install']['user']                       = ""
+default['install']['user']                         = ""
+
+############################ END GLOBAL ATTRIBUTES #######################################
 
 default['conda']['version']                      = "5.2.0"
 # the version of python: either '2' or '3'
