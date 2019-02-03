@@ -1,3 +1,4 @@
+############################ BEGIN GLOBAL ATTRIBUTES #######################################
 
 default["install"]["ssl"]                        = "false"
 default["install"]["cleanup_downloads"]          = "false"
@@ -16,6 +17,20 @@ default["install"]["version"]                    = "0.9.0-SNAPSHOT"
 # List of released versions
 default["install"]["versions"]                     = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1"
 
+
+# These are global attributes which are inherited by all the cookbooks and therefore availabel
+# to all of them
+
+default["java"]["install_flavor"]                  = "openjdk"
+default['java']['set_etc_environment']             = true
+default["java"]["jdk_version"]                     = 8
+
+default["rhel"]["epel"]                            = true 
+
+############################ END GLOBAL ATTRIBUTES #######################################
+
+default['install']['dir']                        = ""
+>>>>>>> 88b6890a35c7a2b571a724bc7cfe2f616c5e26f8
 default['install']['user']                       = ""
 
 default['conda']['version']                      = "5.2.0"
@@ -48,6 +63,3 @@ default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-ser
 # Comma separated list of preinstalled libraries users should not touch
 default['conda']['preinstalled_lib_names']       = "tensorflow-gpu, tensorflow, pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
 
-default["java"]["install_flavor"]                  = "openjdk"
-default['java']['set_etc_environment']             = true
-default["java"]["jdk_version"]                     = 8
