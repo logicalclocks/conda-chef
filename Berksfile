@@ -6,4 +6,4 @@ cookbook 'apache2', '~> 3.3.0'
 cookbook 'java'
 metadata
 
-cookbook 'ulimit', github: "logicalclocks/chef-ulimit", branch: "master"
+cookbook 'ulimit', github: "logicalclocks/chef-ulimit", branch: "0.9"
