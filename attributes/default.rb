@@ -1,5 +1,23 @@
 ############################ BEGIN GLOBAL ATTRIBUTES #######################################
 
+default["install"]["ssl"]                        = "false"
+default["install"]["cleanup_downloads"]          = "false"
+default["install"]["upgrade"]                    = "false"
+default["install"]["addhost"]                    = "false"
+
+# Set the root installation directory for Hopsworks to /srv/hops
+default["install"]["dir"]                        = "/srv/hops"
+
+# Current installed version
+default["install"]["current_version"]            = ""
+
+# Update target
+default["install"]["version"]                    = "0.9.0-SNAPSHOT"
+
+# List of released versions
+default["install"]["versions"]                     = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1"
+
+
 # These are global attributes which are inherited by all the cookbooks and therefore availabel
 # to all of them
 
@@ -9,10 +27,10 @@ default["java"]["jdk_version"]                     = 8
 
 default["rhel"]["epel"]                            = true 
 
-############################ END GLOBAL ATTRIBUTES #######################################
 
-default['install']['dir']                        = ""
-default['install']['user']                       = ""
+default['install']['user']                         = ""
+
+############################ END GLOBAL ATTRIBUTES #######################################
 
 default['conda']['version']                      = "5.2.0"
 # the version of python: either '2' or '3'
@@ -43,3 +61,4 @@ default["conda"]["default_libs"]                   = %w{ }
 default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, mmlspark, numpy"
 # Comma separated list of preinstalled libraries users should not touch
 default['conda']['preinstalled_lib_names']       = "tensorflow-gpu, tensorflow, pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
+

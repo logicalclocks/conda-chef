@@ -153,3 +153,36 @@ template "/home/#{node['conda']['user']}/hops-system-environment.yml" do
             })
 end
 
+# Conda needs the .conda directory, the .conda/pkgs directory and the .conda/environments.txt file
+# it is supposed to automatically create them, but it's very unpredictable when it comes to do so
+# so we create them manually here
+
+directory "/home/#{node['conda']['user']}/.conda" do
+  user node['conda']['user']
+  group node['conda']['group']
+end
+
+directory "/home/#{node['conda']['user']}/.conda/pkgs" do
+  user node['conda']['user']
+  group node['conda']['group']
+end
+
+
+file "/home/#{node['conda']['user']}/.conda/environments.txt" do
+  user node['conda']['user']
+  group node['conda']['group']
+end
+
+bash "update_conda" do
+  user node['conda']['user']
+  group node['conda']['group']
+  environment ({'HOME' => "/home/#{node['conda']['user']}"})
+  cwd "/home/#{node['conda']['user']}"
+  retries 1
+  retry_delay 10
+  code <<-EOF
+    #set -e
+    #{node['conda']['base_dir']}/bin/conda update conda -y -q
+    #{node['conda']['base_dir']}/bin/conda update anaconda -y -q
+  EOF
+end

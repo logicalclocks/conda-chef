@@ -40,11 +40,39 @@ attribute "conda/group",
           :type => 'string'
 
 attribute "install/dir",
-          :description => "Set to a base directory under which we will install.",
+          :description => "Default ''. Set to a base directory under which all hops services will be installed.",
           :type => "string"
 
 attribute "install/user",
           :description => "User to install the services as",
+          :type => "string"
+
+attribute "install/upgrade",
+          :description => "User to upgrade the software",
+          :type => "string"
+
+attribute "install/ssl",
+          :description => "Is SSL turned on for all services?",
+          :type => "string"
+
+attribute "install/cleanup_downloads",
+          :description => "Remove any zipped binaries that were downloaded and used to install services",
+          :type => "string"
+
+attribute "install/addhost",
+          :description => "Indicates that this host will be added to an existing Hops cluster.",
+          :type => "string"
+
+attribute "install/current_version",
+          :description => "Current installed Hopsworks version",
+          :type => "string"
+
+attribute "install/version",
+          :description => "Hopsworks target install version.",
+          :type => "string"
+
+attribute "install/versions",
+          :description => "Comma-separated list of previous versions of Hopsworks.",
           :type => "string"
 
 attribute "conda/mirror_list",
