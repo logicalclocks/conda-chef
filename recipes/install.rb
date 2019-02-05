@@ -84,6 +84,7 @@ end
 bash 'run_conda_installer' do
   user node['conda']['user']
   group node['conda']['group']
+  umask "022"
   code <<-EOF
    #{installer_path} -b -p #{node['conda']['home']}
   EOF
@@ -100,6 +101,7 @@ dirs=%w{ envs pkgs lib }
 for d in dirs do
   bash 'run_conda_installer_#{d}' do
     user "root"
+    umask "022"
     code <<-EOF
    set -e
    if [ ! -d #{node['conda']['dir']}/#{d} ] ; then    # if a new install, mv out envs/libs to keep when upgrading
