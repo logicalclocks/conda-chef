@@ -47,7 +47,8 @@ default['conda']['dir']                          = node['install']['dir'].empty?
 default['conda']['home']                         = "#{node['conda']['dir']}/anaconda-#{node['conda']['python']}-#{node['conda']['version']}"
 default['conda']['base_dir']                     = "#{node['conda']['dir']}/anaconda"
 
-default['conda']['mirror_list']                  = ""
+default['conda']['channels']['default_mirrors']  = ""
+default['conda']['channels']['pytorch']          = ""
 default['conda']['use_defaults']                 = "true"
 default['conda']['repodata_ttl']                 = 43200 # Cache repodata information for 12h 
 
@@ -58,8 +59,8 @@ default['pypi']['trusted-host']                  = ""
 default["conda"]["default_libs"]                   = %w{ }
 #numpy hdfs3 scikit-learn matplotlib pandas
 
-# Comma separated list of provided library names we install for users
-default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, mmlspark, numpy"
-# Comma separated list of preinstalled libraries users should not touch
-default['conda']['preinstalled_lib_names']       = "tensorflow-gpu, tensorflow, pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
+# Comma separated list of preinstalled libraries users are able to uninstall
+default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib"
+# Comma separated list of preinstalled libraries users are not able to uninstall
+default['conda']['preinstalled_lib_names']       = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
 

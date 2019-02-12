@@ -9,10 +9,16 @@
 # (this can be changed by modifying the channel_alias key; see below).
 # The default is just 'defaults'.
 channels:
-<% if not node['conda']['mirror_list'].eql?("") %>
-<% node['conda']['mirror_list'].split(',').each do |channel| %>
+<% if not node['conda']['channels']['default_mirrors'].eql?("") %>
+<% node['conda']['channels']['default_mirrors'].split(',').each do |channel| %>
   - <%= channel %>
 <% end -%>
+<% end -%>
+<% if not node['conda']['channels']['pytorch'].eql?("") %>
+  - <%= node['conda']['channels']['pytorch'] %>
+<% end -%>
+<% if node['conda']['channels']['pytorch'].eql?("") %>
+  - https://conda.anaconda.org/pytorch/
 <% end -%>
 <% if node['conda']['use_defaults'].eql?("true") %>
   - defaults
