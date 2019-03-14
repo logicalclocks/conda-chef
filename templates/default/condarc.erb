@@ -18,6 +18,13 @@ channels:
   - defaults
 <% end -%>
 
+# Use symlinks in python interpreter paths
+envs_dirs: [ <%= node['conda']['base_dir'] %>/envs ]
+pkgs_dirs: [ <%= node['conda']['base_dir'] %>/pkgs ]
+
+# Cache repodata information for faster envs creation/libs install
+local_repodata_ttl: <%= node['conda']['repodata_ttl'] %>
+
 # Show channel URLs when displaying what is going to be downloaded
 # and in 'conda list'. The default is False.
 show_channel_urls: True

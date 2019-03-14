@@ -49,6 +49,7 @@ default['conda']['base_dir']                     = "#{node['conda']['dir']}/anac
 
 default['conda']['mirror_list']                  = ""
 default['conda']['use_defaults']                 = "true"
+default['conda']['repodata_ttl']                 = 43200 # Cache repodata information for 12h 
 
 default['pypi']['index']                         = ""
 default['pypi']['index-url']                     = ""
