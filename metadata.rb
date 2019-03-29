@@ -73,8 +73,12 @@ attribute "install/versions",
           :description => "Comma-separated list of previous versions of Hopsworks.",
           :type => "string"
 
-attribute "conda/mirror_list",
+attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
+          :type => "string"
+
+attribute "conda/channels/pytorch",
+          :description => "channel to use for pytorch packages",
           :type => "string"
 
 attribute "conda/use_defaults",

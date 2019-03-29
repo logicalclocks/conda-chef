@@ -137,8 +137,8 @@ ulimit_domain node['conda']['user'] do
   end
 end
 
-if node[:conda].attribute?(:mirror_list)
-  conda_mirrors = node[:conda][:mirror_list].split(",").map(&:strip)
+if node[:conda][:channels].attribute?(:default_mirrors)
+  conda_mirrors = node[:conda][:channels][:default_mirrors].split(",").map(&:strip)
 else
   conda_mirrors = []
 end
