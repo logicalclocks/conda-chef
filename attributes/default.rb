@@ -36,6 +36,9 @@ default['conda']['version']                      = "5.2.0"
 # the version of python: either '2' or '3'
 default['conda']['python']                       = "2"
 
+# hops-util-py version, when value is "master" install from git, when value is "0.6.0.0" do pip install hops==0.6.0.0
+default["conda"]["hops-util-py-version"]          = "master"
+
 # node['download_url'] is not set unless overwritten in the cluster definition. If it's not overwritten, download the artifact from snurran
 default['conda']['url']                          = node.attribute?(:download_url) ? node['download_url'] + "/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh" : "http://snurran.sics.se/hops/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh"
 

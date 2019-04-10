@@ -80,7 +80,7 @@ bash "create_hops-system_env" do
        #{node['conda']['base_dir']}/bin/conda env create -q --file hops-system-environment.yml"
 
     # hops-util-py needs to be installed outside the yml since we install from github during development
-    export HOPS_UTIL_PY_VERSION=#{node['kagent']['hops-util-py-version']}
+    export HOPS_UTIL_PY_VERSION=#{node['conda']['hops-util-py-version']}
     if [ $HOPS_UTIL_PY_VERSION == "master" ] ; then
         yes | #{node['conda']['base_dir']}/envs/hops-system/bin/pip install git+https://github.com/logicalclocks/hops-util-py.git --no-dependencies
     else
