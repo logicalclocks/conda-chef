@@ -79,12 +79,14 @@ bash "create_hops-system_env" do
     su #{node['conda']['user']} -c "HADOOP_HOME=#{node['install']['dir']}/hadoop \
        #{node['conda']['base_dir']}/bin/conda env create -q --file hops-system-environment.yml"
 
-    # hops-util-py needs to be installed outside the yml since we install from github during development
-    export HOPS_UTIL_PY_VERSION=#{node['conda']['hops-util-py-version']}
-    if [ $HOPS_UTIL_PY_VERSION == "master" ] ; then
-        yes | #{node['conda']['base_dir']}/envs/hops-system/bin/pip install git+https://github.com/logicalclocks/hops-util-py.git --no-dependencies
+    export HOPS_UTIL_PY_VERSION=#{node['conda']['hops-util-py']['version']}
+    export HOPS_UTIL_PY_BRANCH=#{node['conda']['hops-util-py']['branch']}
+    export HOPS_UTIL_PY_REPO=#{node['conda']['hops-util-py']['repo']}
+    export HOPS_UTIL_PY_INSTALL_MODE=#{node['conda']['hops-util-py']['install-mode']}
+    if [ $HOPS_UTIL_PY_INSTALL_MODE == "git" ] ; then
+        yes | ${CONDA_DIR}/envs/${PROJECT}/bin/pip install git+https://github.com/${HOPS_UTIL_PY_REPO}/hops-util-py@$HOPS_UTIL_PY_BRANCH
     else
-        yes | #{node['conda']['base_dir']}/envs/hops-system/bin/pip install hops==$HOPS_UTIL_PY_VERSION --no-dependencies
+        yes | ${CONDA_DIR}/envs/${PROJECT}/bin/pip install hops==$HOPS_UTIL_PY_VERSION
     fi
   EOF
   not_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
