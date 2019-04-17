@@ -84,9 +84,9 @@ bash "create_hops-system_env" do
     export HOPS_UTIL_PY_REPO=#{node['conda']['hops-util-py']['repo']}
     export HOPS_UTIL_PY_INSTALL_MODE=#{node['conda']['hops-util-py']['install-mode']}
     if [ $HOPS_UTIL_PY_INSTALL_MODE == "git" ] ; then
-        yes | ${CONDA_DIR}/envs/${PROJECT}/bin/pip install git+https://github.com/${HOPS_UTIL_PY_REPO}/hops-util-py@$HOPS_UTIL_PY_BRANCH --no-dependencies
+        yes | "#{node['conda']['base_dir']}"/envs/hops-system/bin/pip install git+https://github.com/${HOPS_UTIL_PY_REPO}/hops-util-py@$HOPS_UTIL_PY_BRANCH --no-dependencies
     else
-        yes | ${CONDA_DIR}/envs/${PROJECT}/bin/pip install hops==$HOPS_UTIL_PY_VERSION --no-dependencies
+        yes | "#{node['conda']['base_dir']}"/envs/hops-system/bin/pip install hops==$HOPS_UTIL_PY_VERSION --no-dependencies
     fi
   EOF
   not_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
