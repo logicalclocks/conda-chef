@@ -124,3 +124,8 @@ attribute "conda/hops-util-py/repo",
 attribute "conda/hops-util-py/version",
           :description => "The version to install hops-util-py from pip",
           :type => "string"
+
+attribute "conda/hops-util-py/minor",
+          :description => "The bugfix version for hops-util-py",
+          :type => "string"
+
