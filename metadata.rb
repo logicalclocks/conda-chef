@@ -108,3 +108,24 @@ attribute "conda/provided_lib_names",
 attribute "conda/preinstalled_lib_names",
           :description => "Comma separated list of preinstalled libraries users should not touch",
           :type => "string"
+
+attribute "conda/hops-util-py/install-mode",
+          :description => "The mode for installing hops-util-py, either 'pip' to install a specific version or 'git' to install a specific branch",
+          :type => "string"
+
+attribute "conda/hops-util-py/branch",
+          :description => "The branch to install hops-util-py from git",
+          :type => "string"
+
+attribute "conda/hops-util-py/repo",
+          :description => "The repository where to install hops-util-py from git, e.g if you want to install logicalclocks/hops-util/py, set this string to 'logicalclocks'",
+          :type => "string"
+
+attribute "conda/hops-util-py/version",
+          :description => "The version to install hops-util-py from pip",
+          :type => "string"
+
+attribute "conda/hops-util-py/minor",
+          :description => "The bugfix version for hops-util-py",
+          :type => "string"
+

@@ -36,6 +36,14 @@ default['conda']['version']                      = "5.2.0"
 # the version of python: either '2' or '3'
 default['conda']['python']                       = "2"
 
+# either 'pip' or 'git'
+default["conda"]["hops-util-py"]["install-mode"] = 'git'
+default["conda"]["hops-util-py"]["branch"]       = "master"
+default["conda"]["hops-util-py"]["repo"]         = "logicalclocks"
+default["conda"]["hops-util-py"]["minor"]         = "0"
+# last digit is the bugfix version, assuming a version format of X.X.X.X
+default["conda"]["hops-util-py"]["version"]      = node["install"]["versions"].split(',').last + "." + node["conda"]["hops-util-py"]["minor"]
+
 # node['download_url'] is not set unless overwritten in the cluster definition. If it's not overwritten, download the artifact from snurran
 default['conda']['url']                          = node.attribute?(:download_url) ? node['download_url'] + "/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh" : "http://snurran.sics.se/hops/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh"
 
