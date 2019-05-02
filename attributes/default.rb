@@ -25,7 +25,7 @@ default["java"]["install_flavor"]                  = "openjdk"
 default['java']['set_etc_environment']             = true
 default["java"]["jdk_version"]                     = 8
 
-default["rhel"]["epel"]                            = true
+default["rhel"]["epel"]                            = "true"
 
 
 default['install']['user']                         = ""
