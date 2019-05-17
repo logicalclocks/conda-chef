@@ -69,7 +69,7 @@ default["conda"]["default_libs"]                   = %w{ }
 #numpy hdfs3 scikit-learn matplotlib pandas
 
 # Comma separated list of preinstalled libraries users are able to uninstall
-default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy"
+default['conda']['provided_lib_names']           = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy, fastai"
 # Comma separated list of preinstalled libraries users are not able to uninstall
 default['conda']['preinstalled_lib_names']       = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
 
