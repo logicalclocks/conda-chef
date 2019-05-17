@@ -35,6 +35,7 @@ default['install']['user']                         = ""
 default['conda']['version']                      = "5.2.0"
 # the version of python: either '2' or '3'
 default['conda']['python']                       = "2"
+default['conda']['nvidia-ml-py']['version']      = "7.352.0"
 
 # either 'pip' or 'git'
 default["conda"]["hops-util-py"]["install-mode"] = 'git'
