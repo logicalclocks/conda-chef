@@ -102,7 +102,11 @@ attribute "pypi/trusted-host",
           :type => "string"
 
 attribute "conda/provided_lib_names",
-          :description => "Comma separated list of provided library names we install for users",
+          :description => "Comma separated list of provided library names we install for the base conda envs",
+          :type => "string"
+
+attribute "conda/additional_libs",
+          :description => "Comma separated list of additional provided library names we install for the base conda envs",
           :type => "string"
 
 attribute "conda/preinstalled_lib_names",
