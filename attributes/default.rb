@@ -68,6 +68,7 @@ default["conda"]["default_libs"]                  = %w{ }
 #numpy hdfs3 scikit-learn matplotlib pandas
 
 
+# Additional libs will be installed (in tensorflow::default.rb) for the base environments
 default['conda']['additional_libs']               = ""
 # Comma separated list of preinstalled libraries users are able to uninstall
 default['conda']['libs']                          = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy"
