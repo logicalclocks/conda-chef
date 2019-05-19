@@ -69,9 +69,10 @@ default["conda"]["default_libs"]                  = %w{ }
 
 
 default['conda']['additional_libs']               = ""
-
 # Comma separated list of preinstalled libraries users are able to uninstall
-default['conda']['provided_lib_names']            =  node['conda']['additional_libs'].empty? "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy" : "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy, " + node['conda']['additional_libs']
+default['conda']['libs']                          = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy"
+
+default['conda']['provided_lib_names']            =  node['conda']['additional_libs'].empty? node['conda']['libs'] : "#{node['conda']['libs']}, #{node['conda']['additional_libs']}"
 # Comma separated list of preinstalled libraries users are not able to uninstall
 default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
 
