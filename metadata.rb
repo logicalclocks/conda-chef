@@ -101,7 +101,7 @@ attribute "pypi/trusted-host",
           :description => "Trusted host for non https pypi mirrors",
           :type => "string"
 
-attribute "conda/provided_lib_names",
+attribute "conda/libs",
           :description => "Comma separated list of provided library names we install for the base conda envs",
           :type => "string"
 
