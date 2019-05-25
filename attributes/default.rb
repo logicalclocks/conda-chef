@@ -4,6 +4,8 @@ default["install"]["ssl"]                         = "false"
 default["install"]["cleanup_downloads"]           = "false"
 default["install"]["upgrade"]                     = "false"
 default["install"]["addhost"]                     = "false"
+default["install"]["localhost"]                   = "false"
+
 
 # Set the root installation directory for Hopsworks to /srv/hops
 default["install"]["dir"]                         = "/srv/hops"
