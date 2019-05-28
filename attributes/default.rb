@@ -6,7 +6,6 @@ default["install"]["upgrade"]                     = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
 
-
 # Set the root installation directory for Hopsworks to /srv/hops
 default["install"]["dir"]                         = "/srv/hops"
 
@@ -27,7 +26,6 @@ default["java"]["install_flavor"]                 = "openjdk"
 default['java']['set_etc_environment']            = true
 default["java"]["jdk_version"]                    = 8
 default["rhel"]["epel"]                           = "true"
-
 
 default['install']['user']                        = ""
 
