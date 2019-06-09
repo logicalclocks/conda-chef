@@ -71,9 +71,9 @@ default["conda"]["default_libs"]                  = %w{ }
 # Additional libs will be installed (in tensorflow::default.rb) for the base environments
 default['conda']['additional_libs']               = ""
 # Comma separated list of preinstalled libraries users are able to uninstall
-default['conda']['libs']                          = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy, tqdm"
+default['conda']['libs']                          = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy, tqdm, Flask, scikit-learn, avro, seaborn, confluent-kafka, hops-petastorm, opencv-python"
 
 default['conda']['provided_lib_names']            =  node['conda']['additional_libs'].empty? ? node['conda']['libs'] : "#{node['conda']['libs']}, #{node['conda']['additional_libs']}"
 # Comma separated list of preinstalled libraries users are not able to uninstall
-default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
+default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents, pyjks"
 
