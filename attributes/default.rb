@@ -37,7 +37,7 @@ default['conda']['python']                        = "2"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 
 # either 'pip' or 'git'
-default["conda"]["hops-util-py"]["install-mode"]  = 'git'
+default["conda"]["hops-util-py"]["install-mode"] = "pip"
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
 default["conda"]["hops-util-py"]["minor"]         = "0"
