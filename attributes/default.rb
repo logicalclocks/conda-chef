@@ -12,7 +12,7 @@ default["install"]["dir"]                         = "/srv/hops"
 default["install"]["current_version"]             = ""
 
 # Update target
-default["install"]["version"]                     = "0.10.0-SNAPSHOT"
+default["install"]["version"]                     = "0.10.0"
 
 # List of released versions
 default["install"]["versions"]                    = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1"
@@ -37,12 +37,12 @@ default['conda']['python']                        = "2"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 
 # either 'pip' or 'git'
-default["conda"]["hops-util-py"]["install-mode"] = "pip"
+default["conda"]["hops-util-py"]["install-mode"]  = "pip"
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
 default["conda"]["hops-util-py"]["minor"]         = "0"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
-default["conda"]["hops-util-py"]["version"]       = node["install"]["versions"].split(',').last + "." + node["conda"]["hops-util-py"]["minor"]
+default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
 # node['download_url'] is not set unless overwritten in the cluster definition. If it's not overwritten, download the artifact from snurran
 default['conda']['url']                           = node.attribute?(:download_url) ? node['download_url'] + "/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh" : "http://snurran.sics.se/hops/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh"
