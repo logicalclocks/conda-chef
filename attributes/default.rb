@@ -13,10 +13,10 @@ default["install"]["dir"]                         = "/srv/hops"
 default["install"]["current_version"]             = ""
 
 # Update target
-default["install"]["version"]                     = "0.10.0-SNAPSHOT"
+default["install"]["version"]                     = "1.0.0-SNAPSHOT"
 
 # List of released versions
-default["install"]["versions"]                    = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1"
+default["install"]["versions"]                    = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1,0.10.0"
 
 
 # These are global attributes which are inherited by all the cookbooks and therefore availabel
@@ -31,7 +31,7 @@ default['install']['user']                        = ""
 
 ############################ END GLOBAL ATTRIBUTES #######################################
 
-default['conda']['version']                       = "5.2.0"
+default['conda']['version']                       = "2019.03"
 # the version of python: either '2' or '3'
 default['conda']['python']                        = "2"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
@@ -42,7 +42,7 @@ default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
 default["conda"]["hops-util-py"]["minor"]         = "0"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
-default["conda"]["hops-util-py"]["version"]       = node["install"]["versions"].split(',').last + "." + node["conda"]["hops-util-py"]["minor"]
+default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
 # node['download_url'] is not set unless overwritten in the cluster definition. If it's not overwritten, download the artifact from snurran
 default['conda']['url']                           = node.attribute?(:download_url) ? node['download_url'] + "/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh" : "http://snurran.sics.se/hops/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh"
@@ -71,9 +71,9 @@ default["conda"]["default_libs"]                  = %w{ }
 # Additional libs will be installed (in tensorflow::default.rb) for the base environments
 default['conda']['additional_libs']               = ""
 # Comma separated list of preinstalled libraries users are able to uninstall
-default['conda']['libs']                          = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy, tqdm"
+default['conda']['libs']                          = "hops, pandas, tensorflow-serving-api, hopsfacets, numpy, matplotlib, maggy, tqdm, Flask, scikit-learn, avro, seaborn, confluent-kafka, hops-petastorm, opencv-python"
 
 default['conda']['provided_lib_names']            =  node['conda']['additional_libs'].empty? ? node['conda']['libs'] : "#{node['conda']['libs']}, #{node['conda']['additional_libs']}"
 # Comma separated list of preinstalled libraries users are not able to uninstall
-default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents"
+default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents, pyjks"
 
