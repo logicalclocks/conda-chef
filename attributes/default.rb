@@ -40,7 +40,7 @@ default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 default["conda"]["hops-util-py"]["install-mode"]  = 'git'
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
-default["conda"]["hops-util-py"]["minor"]         = "0"
+default["conda"]["hops-util-py"]["minor"]         = "1"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
 default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
