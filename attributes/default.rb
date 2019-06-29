@@ -40,7 +40,7 @@ default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 default["conda"]["hops-util-py"]["install-mode"]  = "pip"
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
-default["conda"]["hops-util-py"]["minor"]         = "0"
+default["conda"]["hops-util-py"]["minor"]         = "2"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
 default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
@@ -58,7 +58,7 @@ default['conda']['base_dir']                      = "#{node['conda']['dir']}/ana
 default['conda']['channels']['default_mirrors']   = ""
 default['conda']['channels']['pytorch']           = ""
 default['conda']['use_defaults']                  = "true"
-default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h 
+default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h
 
 default['pypi']['index']                          = ""
 default['pypi']['index-url']                      = ""
@@ -76,4 +76,3 @@ default['conda']['libs']                          = "hops, pandas, tensorflow-se
 default['conda']['provided_lib_names']            =  node['conda']['additional_libs'].empty? ? node['conda']['libs'] : "#{node['conda']['libs']}, #{node['conda']['additional_libs']}"
 # Comma separated list of preinstalled libraries users are not able to uninstall
 default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyter, sparkmagic, hdfscontents, pyjks"
-
