@@ -5,6 +5,9 @@ default["install"]["cleanup_downloads"]           = "false"
 default["install"]["upgrade"]                     = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
+default["install"]["gce"]                         = "false"
+default["install"]["aws"]                         = "false"
+default["install"]["azure"]                       = "false"
 
 # Set the root installation directory for Hopsworks to /srv/hops
 default["install"]["dir"]                         = "/srv/hops"
