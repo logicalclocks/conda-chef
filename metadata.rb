@@ -137,3 +137,11 @@ attribute "conda/hops-util-py/minor",
           :description => "The bugfix version for hops-util-py",
           :type => "string"
 
+attribute "conda/pydoop/version",
+          :description => "Pydoop version to install in python base environments",
+          :type => "string"
+
+attribute "conda/nvidia-ml-py/version",
+          :description => "nvidia-ml-py version to install in python base environments",
+          :type => "string"
+

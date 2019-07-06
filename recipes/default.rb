@@ -76,7 +76,8 @@ bash "create_hops-system_env" do
   umask "022"
   cwd "/home/#{node['conda']['user']}"
   code <<-EOF
-    su #{node['conda']['user']} -c "HADOOP_HOME=#{node['install']['dir']}/hadoop \
+    set -e
+    su #{node['conda']['user']} -c "HADOOP_HOME=#{node['install']['dir']}/hadoop PATH=#{node['install']['dir']}/hadoop/bin:$PATH \
        #{node['conda']['base_dir']}/bin/conda env create -q --file hops-system-environment.yml"
 
     export HOPS_UTIL_PY_VERSION=#{node['conda']['hops-util-py']['version']}

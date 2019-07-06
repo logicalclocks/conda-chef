@@ -35,6 +35,7 @@ default['conda']['version']                       = "2019.03"
 # the version of python: either '2' or '3'
 default['conda']['python']                        = "2"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
+default['conda']['pydoop']['version']             = "2.0.0"
 
 # either 'pip' or 'git'
 default["conda"]["hops-util-py"]["install-mode"]  = 'git'
