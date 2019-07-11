@@ -77,16 +77,8 @@ attribute "install/localhost",
           :description => "Set to 'true' for a localhost installation. Default is 'false'",
           :type => 'string'
 
-attribute "install/gce",
-          :description => "Set to 'true' for a Google Cloud installation. Default is 'false'",
-          :type => 'string'
-
-attribute "install/aws",
-          :description => "Set to 'true' for a AWS EC2 installation. Default is 'false'",
-          :type => 'string'
-
-attribute "install/azure",
-          :description => "Set to 'true' for a Microsoft Azure installation. Default is 'false'",
+attribute "install/cloud",
+          :description => "Set to '' for no cloud provider. Valid values are: 'aws', 'gce', 'azure'.",
           :type => 'string'
 
 attribute "conda/channels/default_mirrors",
