@@ -73,6 +73,14 @@ attribute "install/versions",
           :description => "Comma-separated list of previous versions of Hopsworks.",
           :type => "string"
 
+attribute "install/localhost",
+          :description => "Set to 'true' for a localhost installation. Default is 'false'",
+          :type => 'string'
+
+attribute "install/cloud",
+          :description => "Set to '' for no cloud provider. Valid values are: 'aws', 'gce', 'azure'.",
+          :type => 'string'
+
 attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
           :type => "string"
