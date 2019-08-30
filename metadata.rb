@@ -45,6 +45,22 @@ attribute "install/user",
           :description => "User to install the services as",
           :type => "string"
 
+attribute "install/enterprise/install",
+          :description => "Set to true if installing Hopsworks EE",
+          :type => "string"
+
+attribute "install/enterprise/download_url",
+          :description => "Download URL for Hopsworks EE, similar to download_url",
+          :type => "string"
+
+attribute "install/enterprise/username",
+          :description => "Username for protected artifacts",
+          :type => "string"
+
+attribute "install/enterprise/password",
+          :description => "Password for protected artifacts",
+          :type => "string"
+
 attribute "install/upgrade",
           :description => "User to upgrade the software",
           :type => "string"
