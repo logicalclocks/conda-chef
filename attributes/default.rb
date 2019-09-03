@@ -33,6 +33,11 @@ default["rhel"]["epel"]                           = "true"
 
 default['install']['user']                        = ""
 
+default['install']['enterprise']['install']       = "false"
+default['install']['enterprise']['download_url']  = nil
+default['install']['enterprise']['username']      = nil
+default['install']['enterprise']['password']      = nil
+
 ############################ END GLOBAL ATTRIBUTES #######################################
 
 default['conda']['version']                       = "2019.07"
