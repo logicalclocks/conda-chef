@@ -2,7 +2,7 @@ if node['kernel']['machine'] != 'x86_64'
    Chef::Log.fatal!("Unrecognized node.kernel.machine=#{node['kernel']['machine']}; Only x86_64", 1)
 end
 
-package "bzip2"
+package ["bzip2", "vim", "emacs", "iftop", "htop", "iotop"]
 
 group node['conda']['group']
 user node['conda']['user'] do
