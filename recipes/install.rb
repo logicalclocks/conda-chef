@@ -2,7 +2,7 @@ if node['kernel']['machine'] != 'x86_64'
    Chef::Log.fatal!("Unrecognized node.kernel.machine=#{node['kernel']['machine']}; Only x86_64", 1)
 end
 
-package "bzip2"
+package ["bzip2", "vim", "iftop", "htop", "iotop"]
 
 group node['conda']['group']
 user node['conda']['user'] do
@@ -54,26 +54,26 @@ end
 
 if !node['pypi']['index'].eql?("") || !node['pypi']['index-url'].eql?("")
   # PIP mirror configuration
-  directory "/home/#{node['conda']['user']}/.pip" do 
+  directory "/home/#{node['conda']['user']}/.pip" do
     user node['conda']['user']
     group node['conda']['group']
     action :create
   end
 
-  template "/home/#{node['conda']['user']}/.pip/pip.conf" do 
+  template "/home/#{node['conda']['user']}/.pip/pip.conf" do
     source "pip.conf.erb"
     user node['conda']['user']
     group node['conda']['group']
     mode 0755
   end
 
-  directory "/root/.pip" do 
-    user 'root' 
-    group 'root' 
+  directory "/root/.pip" do
+    user 'root'
+    group 'root'
     action :create
   end
 
-  template "/root/.pip/pip.conf" do 
+  template "/root/.pip/pip.conf" do
     source "pip.conf.erb"
     user "root"
     group "root"
@@ -182,7 +182,7 @@ bash "update_conda" do
   retry_delay 10
   code <<-EOF
     #{node['conda']['base_dir']}/bin/conda install --no-deps pycryptosat libcryptominisat
-    #{node['conda']['base_dir']}/bin/conda config --set sat_solver pycryptosat 
+    #{node['conda']['base_dir']}/bin/conda config --set sat_solver pycryptosat
     #{node['conda']['base_dir']}/bin/conda update anaconda -y -q
   EOF
 end
