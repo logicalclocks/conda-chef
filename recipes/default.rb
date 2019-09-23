@@ -16,6 +16,7 @@ group hops_group do
   action :modify
   members ["#{node['conda']['user']}"]
   append true
+  not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
 
 #

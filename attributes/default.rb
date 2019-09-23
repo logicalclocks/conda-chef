@@ -32,6 +32,7 @@ default["java"]["jdk_version"]                    = 8
 default["rhel"]["epel"]                           = "true"
 
 default['install']['user']                        = ""
+default["install"]["external_users"]              = "false"
 
 default['install']['enterprise']['install']       = "false"
 default['install']['enterprise']['download_url']  = nil
