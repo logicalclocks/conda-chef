@@ -24,7 +24,7 @@ attribute "rhel/epel",
           :type => 'string'
 
 attribute "install/external_users",
-          :description => "Set to true if the service accounts are managed externally, such as from LDAP, (Default: False)"
+          :description => "Set to true if the service accounts are managed externally, such as from LDAP, (Default: False)",
           :type => 'string'
 
 ################################ end installation wide attributes   ########################################
