@@ -2,6 +2,10 @@ if node['kernel']['machine'] != 'x86_64'
    Chef::Log.fatal!("Unrecognized node.kernel.machine=#{node['kernel']['machine']}; Only x86_64", 1)
 end
 
+if node['platform_family'].eql?("rhel") && node['rhel']['epel'].downcase == "true"
+  package "epel-release"
+end
+
 package ["bzip2", "vim", "iftop", "htop", "iotop"]
 
 group node['conda']['group']
