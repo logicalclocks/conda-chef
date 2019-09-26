@@ -23,6 +23,10 @@ attribute "rhel/epel",
           :description => "Install epel-release package on rhel/centos",
           :type => 'string'
 
+attribute "install/external_users",
+          :description => "Set to true if the service accounts are managed externally, such as from LDAP, (Default: False)",
+          :type => 'string'
+
 ################################ end installation wide attributes   ########################################
 
 attribute "conda/dir",
