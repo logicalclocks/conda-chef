@@ -169,3 +169,6 @@ attribute "conda/nvidia-ml-py/version",
           :description => "nvidia-ml-py version to install in python base environments",
           :type => "string"
 
+attribute "conda/jupyter/jupyterlab-git/version",
+          :description => "Version of Hopsworks version of jupyterlab-git plugin",
+          :type => 'string'
