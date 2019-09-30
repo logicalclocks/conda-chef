@@ -47,7 +47,7 @@ default['conda']['python']                        = "2"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 default['conda']['pydoop']['version']             = "2.0.0"
 default['conda']['beam']['version']               = "2.15.0"
-default['conda']['beam']['python']['version']     = node['conda']['beam']['version'] + ".2"
+default['conda']['beam']['python']['version']     = node['conda']['beam']['version'] + ".3"
 # either 'pip' or 'git'
 default["conda"]["hops-util-py"]["install-mode"]  = 'git'
 default["conda"]["hops-util-py"]["branch"]        = "master"
