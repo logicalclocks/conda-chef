@@ -9,6 +9,8 @@ default["install"]["localhost"]                   = "false"
 # Valid values are 'aws', 'gce', 'azure'
 default["install"]["cloud"]                       = ""
 
+default["install"]["aws"]["instance_role"]        = "false"
+
 
 # Set the root installation directory for Hopsworks to /srv/hops
 default["install"]["dir"]                         = "/srv/hops"

@@ -101,6 +101,10 @@ attribute "install/cloud",
           :description => "Set to '' for no cloud provider. Valid values are: 'aws', 'gce', 'azure'.",
           :type => 'string'
 
+attribute "install/aws/instance_role",
+          :description => "Set to true if using AWS and authorization should be done using the instance role",
+          :type => 'string'
+
 attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
           :type => "string"
