@@ -54,7 +54,7 @@ default['conda']['beam']['python']['version']     = node['conda']['beam']['versi
 default["conda"]["hops-util-py"]["install-mode"] = "pip"
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
-default["conda"]["hops-util-py"]["minor"]         = "2"
+default["conda"]["hops-util-py"]["minor"]         = "3"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
 default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
@@ -72,7 +72,7 @@ default['conda']['base_dir']                      = "#{node['conda']['dir']}/ana
 default['conda']['channels']['default_mirrors']   = ""
 default['conda']['channels']['pytorch']           = ""
 default['conda']['use_defaults']                  = "true"
-default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h 
+default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h
 
 default['pypi']['index']                          = ""
 default['pypi']['index-url']                      = ""
@@ -94,4 +94,3 @@ default['conda']['jupyter']['version']['py3']            = "1.1.4"
 default['conda']['jupyter']['version']['py2']            = "0.33.12"
 ## Hopsworks version of JupyterLab-Git pluging, last digit is Hopsworks version
 default['conda']['jupyter']['jupyterlab-git']['version'] = "0.8.1.2"
-
