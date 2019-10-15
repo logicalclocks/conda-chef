@@ -65,10 +65,6 @@ attribute "install/enterprise/password",
           :description => "Password for protected artifacts",
           :type => "string"
 
-attribute "install/upgrade",
-          :description => "User to upgrade the software",
-          :type => "string"
-
 attribute "install/ssl",
           :description => "Is SSL turned on for all services?",
           :type => "string"
