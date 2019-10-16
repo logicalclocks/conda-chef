@@ -186,8 +186,9 @@ bash "update_conda" do
   retries 1
   retry_delay 10
   code <<-EOF
+    #{node['conda']['base_dir']}/bin/conda update anaconda -y -q
     #{node['conda']['base_dir']}/bin/conda install --no-deps pycryptosat libcryptominisat
     #{node['conda']['base_dir']}/bin/conda config --set sat_solver pycryptosat
-    #{node['conda']['base_dir']}/bin/conda update anaconda -y -q
+    #{node['conda']['base_dir']}/bin/conda config --set default_threads 4
   EOF
 end
