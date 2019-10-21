@@ -6,7 +6,7 @@ if node['platform_family'].eql?("rhel") && node['rhel']['epel'].downcase == "tru
   package "epel-release"
 end
 
-package ["bzip2", "vim", "iftop", "htop", "iotop"]
+package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"]
 
 group node['conda']['group']
 user node['conda']['user'] do
@@ -102,20 +102,20 @@ link node['conda']['base_dir'] do
   to node['conda']['home']
 end
 
-dirs=%w{ envs pkgs lib }
-for d in dirs do
+['envs', 'pkgs'].each do |d|
   bash 'run_conda_installer_#{d}' do
     user "root"
     umask "022"
     code <<-EOF
-   set -e
-   if [ ! -d #{node['conda']['dir']}/#{d} ] ; then    # if a new install, mv out envs/libs to keep when upgrading
-       mv #{node['conda']['home']}/#{d} #{node['conda']['dir']}
-       chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['dir']}/#{d}
-   else  # this is an upgrade, keep existing installed libs/envs/etc
-      rm -rf #{node['conda']['home']}/#{d}
-   fi
-  EOF
+      set -e
+      if [ ! -d #{node['conda']['dir']}/#{d} ] ; then    # if a new install, mv out envs/libs to keep when upgrading
+          mv #{node['conda']['home']}/#{d} #{node['conda']['dir']}
+          chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['dir']}/#{d}
+      else  # this is an upgrade, keep existing installed libs/envs/etc
+          rsync -az #{node['conda']['home']}/#{d}/* #{node['conda']['dir']}/#{d}
+          rm -rf #{node['conda']['home']}/#{d}
+      fi
+    EOF
   end
   link "#{node['conda']['home']}/#{d}" do
     owner node['conda']['user']
