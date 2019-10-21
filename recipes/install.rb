@@ -112,7 +112,11 @@ end
           mv #{node['conda']['home']}/#{d} #{node['conda']['dir']}
           chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['dir']}/#{d}
       else  # this is an upgrade, keep existing installed libs/envs/etc
-          rsync -az #{node['conda']['home']}/#{d}/* #{node['conda']['dir']}/#{d}
+          # Copy what there is in pkgs dir, if it's not a link.
+          if [ "#{d}" == "pkgs" ] && [ ! -L #{node['conda']['home']}/#{d} ];
+          then
+            rsync -a #{node['conda']['home']}/#{d}/* #{node['conda']['dir']}/#{d}
+          fi
           rm -rf #{node['conda']['home']}/#{d}
       fi
     EOF
