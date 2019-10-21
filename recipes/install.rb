@@ -102,8 +102,7 @@ link node['conda']['base_dir'] do
   to node['conda']['home']
 end
 
-dirs=%w{ envs pkgs lib }
-for d in dirs do
+['envs', 'pkgs'].each do |d|
   bash 'run_conda_installer_#{d}' do
     user "root"
     umask "022"
