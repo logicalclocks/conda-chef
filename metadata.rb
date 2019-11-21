@@ -109,10 +109,6 @@ attribute "conda/channels/pytorch",
           :description => "channel to use for pytorch packages",
           :type => "string"
 
-attribute "conda/channels/pytorch_cpu",
-          :description => "channel to use for pytorch cpu packages",
-          :type => "string"
-
 attribute "conda/use_defaults",
           :description => "whether or not to add the defaults mirrors to the channels list (default yes)",
           :type => "string"
