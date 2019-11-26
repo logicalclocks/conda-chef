@@ -44,7 +44,7 @@ default['install']['enterprise']['password']      = nil
 
 default['conda']['version']                       = "2019.10"
 # the version of python: either '2' or '3'
-default['conda']['python']                        = "2"
+default['conda']['python']                        = "3"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 default['conda']['pydoop']['version']             = "2.0.0"
 default['conda']['beam']['version']               = "2.15.0"
@@ -84,7 +84,7 @@ default["conda"]["default_libs"]                  = %w{ }
 # Additional libs will be installed (in tensorflow::default.rb) for the base environments
 default['conda']['additional_libs']               = ""
 # Comma separated list of preinstalled libraries users are able to uninstall
-default['conda']['libs']                          = "hops, pandas, numpy, matplotlib, maggy, tqdm, Flask, scikit-learn, avro, seaborn, confluent-kafka, hops-petastorm, opencv-python, tfx, tensorflow-model-analysis"
+default['conda']['libs']                          = "hops, pandas, numpy, matplotlib, maggy, tqdm, Flask, scikit-learn, avro, seaborn, confluent-kafka, hops-petastorm, opencv-python, tfx, tensorflow-model-analysis, pytorch, torchvision"
 default['conda']['provided_lib_names']            =  node['conda']['additional_libs'].empty? ? node['conda']['libs'] : "#{node['conda']['libs']}, #{node['conda']['additional_libs']}"
 # Comma separated list of preinstalled libraries users are not able to uninstall
 default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
