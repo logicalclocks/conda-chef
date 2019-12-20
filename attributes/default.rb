@@ -53,7 +53,7 @@ default['conda']['beam']['python']['version']     = node['conda']['beam']['versi
 default["conda"]["hops-util-py"]["install-mode"] = "pip"
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
-default["conda"]["hops-util-py"]["minor"]         = "3"
+default["conda"]["hops-util-py"]["minor"]         = "0"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
 default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
