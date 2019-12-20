@@ -18,7 +18,7 @@ default["install"]["dir"]                         = "/srv/hops"
 default["install"]["current_version"]             = ""
 
 # Update target
-default["install"]["version"] = "1.1.0-SNAPSHOT"
+default["install"]["version"] = "1.1.0"
 
 # List of released versions
 default["install"]["versions"] = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1,0.10.0,1.0.0"
@@ -50,7 +50,7 @@ default['conda']['pydoop']['version']             = "2.0.0"
 default['conda']['beam']['version']               = "2.15.0"
 default['conda']['beam']['python']['version']     = node['conda']['beam']['version'] + ".3"
 # either 'pip' or 'git'
-default["conda"]["hops-util-py"]["install-mode"]  = 'git'
+default["conda"]["hops-util-py"]["install-mode"] = "pip"
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
 default["conda"]["hops-util-py"]["minor"]         = "3"
