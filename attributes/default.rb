@@ -14,6 +14,10 @@ default["install"]["aws"]["instance_role"]        = "false"
 # Set the root installation directory for Hopsworks to /srv/hops
 default["install"]["dir"]                         = "/srv/hops"
 
+# Directory where to store the suders scripts. The whole chain needs to be owned by root
+default["install"]["sudoers"]["scripts_dir"]       = "/srv/hops/sbin"
+default["install"]["sudoers"]["rules"]             = "true"
+
 # Current installed version
 default["install"]["current_version"]             = ""
 

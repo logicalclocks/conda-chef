@@ -100,6 +100,15 @@ attribute "install/cloud",
 attribute "install/aws/instance_role",
           :description => "Set to true if using AWS and authorization should be done using the instance role",
           :type => 'string'
+    
+attribute "install/sudoers/scripts_dir",
+          :description => "Location for the Hopsworks script requiring sudoers, (default: /srv/hops/sbin)",
+          :type => 'string'
+
+attribute "install/sudoers/rules",
+          :description => "Whether or not to add the rules in /etc/sudoers.d/, (default: true)",
+          :type => 'string'
+
 
 attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
