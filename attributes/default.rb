@@ -15,7 +15,7 @@ default["install"]["aws"]["instance_role"]        = "false"
 default["install"]["dir"]                         = "/srv/hops"
 
 # Directory where to store the suders scripts. The whole chain needs to be owned by root
-default["install"]["sudoers"]["scripts_dir"]       = "/srv/hops/sbin"
+default["install"]["sudoers"]["scripts_dir"]       = "#{node["install"]["dir"]}/sbin"
 default["install"]["sudoers"]["rules"]             = "true"
 
 # Current installed version
