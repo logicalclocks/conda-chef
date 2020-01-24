@@ -1,7 +1,6 @@
 ############################ BEGIN GLOBAL ATTRIBUTES #######################################
 
 default["install"]["ssl"]                         = "false"
-default["install"]["cleanup_downloads"]           = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
 
@@ -13,6 +12,11 @@ default["install"]["aws"]["instance_role"]        = "false"
 
 # Set the root installation directory for Hopsworks to /srv/hops
 default["install"]["dir"]                         = "/srv/hops"
+default["install"]["kubernetes"]                  = "false"
+
+# Directory where to store the suders scripts. The whole chain needs to be owned by root
+default["install"]["sudoers"]["scripts_dir"]       = "#{node["install"]["dir"]}/sbin"
+default["install"]["sudoers"]["rules"]             = "true"
 
 # Current installed version
 default["install"]["current_version"]             = ""

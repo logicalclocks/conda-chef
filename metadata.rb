@@ -69,10 +69,6 @@ attribute "install/ssl",
           :description => "Is SSL turned on for all services?",
           :type => "string"
 
-attribute "install/cleanup_downloads",
-          :description => "Remove any zipped binaries that were downloaded and used to install services",
-          :type => "string"
-
 attribute "install/addhost",
           :description => "Indicates that this host will be added to an existing Hops cluster.",
           :type => "string"
@@ -97,9 +93,22 @@ attribute "install/cloud",
           :description => "Set to '' for no cloud provider. Valid values are: 'aws', 'gce', 'azure'.",
           :type => 'string'
 
+attribute "install/kubernetes",
+          :description => "Set to true if you want to deploy the kubernetes enterprise edition. Default is 'fasle'",
+          :type => 'string'
+
 attribute "install/aws/instance_role",
           :description => "Set to true if using AWS and authorization should be done using the instance role",
           :type => 'string'
+    
+attribute "install/sudoers/scripts_dir",
+          :description => "Location for the Hopsworks script requiring sudoers, (default: /srv/hops/sbin)",
+          :type => 'string'
+
+attribute "install/sudoers/rules",
+          :description => "Whether or not to add the rules in /etc/sudoers.d/, (default: true)",
+          :type => 'string'
+
 
 attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
