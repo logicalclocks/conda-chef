@@ -77,6 +77,9 @@ default['conda']['channels']['pytorch']           = ""
 default['conda']['use_defaults']                  = "true"
 default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h
 
+default['conda']['proxy']['http']                 = ""
+default['conda']['proxy']['https']                = ""
+
 default['pypi']['index']                          = ""
 default['pypi']['index-url']                      = ""
 default['pypi']['trusted-host']                   = ""
