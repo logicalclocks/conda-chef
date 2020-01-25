@@ -122,6 +122,14 @@ attribute "conda/use_defaults",
           :description => "whether or not to add the defaults mirrors to the channels list (default yes)",
           :type => "string"
 
+attribute "conda/proxy/http",
+          :description => "Proxy configuration for conda (http)",
+          :type => "string"
+
+attribute "conda/proxy/https",
+          :description => "Proxy configuration for conda (https)",
+          :type => "string"
+
 attribute "conda/default_libs",
           :description => "Space separated list of libraries to be installed in Conda root environment",
           :type => "string"
