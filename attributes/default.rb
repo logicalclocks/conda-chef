@@ -97,6 +97,5 @@ default['conda']['provided_lib_names']            =  node['conda']['additional_l
 default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
 
 default['conda']['jupyter']['version']['py3']            = "1.1.4"
-default['conda']['jupyter']['version']['py2']            = "0.33.12"
 ## Hopsworks version of JupyterLab-Git pluging, last digit is Hopsworks version
 default['conda']['jupyter']['jupyterlab-git']['version'] = "0.8.1.2"
