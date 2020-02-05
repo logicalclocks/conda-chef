@@ -56,7 +56,7 @@ template "/home/#{node['conda']['user']}/.condarc" do
   group node['conda']['group']
   mode 0755
   variables({
-    "pkgs_dirs" => "#{node['conda']['base_dir']}/pkgs"
+    :pkgs_dirs => "#{node['conda']['base_dir']}/pkgs"
   })
 end
 
