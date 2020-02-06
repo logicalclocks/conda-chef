@@ -55,6 +55,9 @@ template "/home/#{node['conda']['user']}/.condarc" do
   user node['conda']['user']
   group node['conda']['group']
   mode 0755
+  variables({
+    :pkgs_dirs => "#{node['conda']['base_dir']}/pkgs"
+  })
 end
 
 if !node['pypi']['index'].eql?("") || !node['pypi']['index-url'].eql?("")
