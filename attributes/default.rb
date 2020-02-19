@@ -5,7 +5,7 @@ default["install"]["cleanup_downloads"]           = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
 
-# Valid values are 'aws', 'gce', 'azure'
+# Valid values are 'aws', 'gcp', 'azure'
 default["install"]["cloud"]                       = ""
 
 default["install"]["aws"]["instance_role"]        = "false"
