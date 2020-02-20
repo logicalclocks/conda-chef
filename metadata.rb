@@ -193,3 +193,20 @@ attribute "conda/nvidia-ml-py/version",
 attribute "conda/jupyter/jupyterlab-git/version",
           :description => "Version of Hopsworks version of jupyterlab-git plugin",
           :type => 'string'
+
+attribute "conda/jupyter/version/py3",
+          :description => "Version of jupyterlab to install",
+          :type => 'string'
+
+attribute "conda/jupyter/notebook/version",
+          :description => "Version of notebook to install",
+          :type => 'string'
+
+attribute "conda/jupyter/tornado/version",
+          :description => "Version of tornado to install",
+          :type => 'string'
+
+attribute "conda/jupyter/prompt-toolkit/version",
+          :description => "Version of prompt-toolkit to install",
+          :type => 'string'
+
