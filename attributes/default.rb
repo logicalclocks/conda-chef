@@ -80,6 +80,7 @@ default['conda']['repodata_ttl']                  = 43200 # Cache repodata infor
 default['conda']['proxy']['http']                 = ""
 default['conda']['proxy']['https']                = ""
 
+default['pypi']['proxy']                          = ""
 default['pypi']['index']                          = ""
 default['pypi']['index-url']                      = ""
 default['pypi']['trusted-host']                   = ""
