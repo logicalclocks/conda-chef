@@ -1,7 +1,6 @@
 ############################ BEGIN GLOBAL ATTRIBUTES #######################################
 
 default["install"]["ssl"]                         = "false"
-default["install"]["cleanup_downloads"]           = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
 
@@ -13,15 +12,20 @@ default["install"]["aws"]["instance_role"]        = "false"
 
 # Set the root installation directory for Hopsworks to /srv/hops
 default["install"]["dir"]                         = "/srv/hops"
+default["install"]["kubernetes"]                  = "false"
+
+# Directory where to store the suders scripts. The whole chain needs to be owned by root
+default["install"]["sudoers"]["scripts_dir"]       = "#{node["install"]["dir"]}/sbin"
+default["install"]["sudoers"]["rules"]             = "true"
 
 # Current installed version
 default["install"]["current_version"]             = ""
 
 # Update target
-default["install"]["version"] = "1.1.0-SNAPSHOT"
+default["install"]["version"] = "1.3.0-SNAPSHOT"
 
 # List of released versions
-default["install"]["versions"] = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1,0.10.0,1.0.0"
+default["install"]["versions"] = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1,0.10.0,1.0.0,1.1.0,1.2.0"
 
 
 # These are global attributes which are inherited by all the cookbooks and therefore availabel
@@ -47,13 +51,13 @@ default['conda']['version']                       = "2019.10"
 default['conda']['python']                        = "3"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 default['conda']['pydoop']['version']             = "2.0.0"
-default['conda']['beam']['version']               = "2.15.0"
-default['conda']['beam']['python']['version']     = node['conda']['beam']['version'] + ".3"
+default['conda']['beam']['version']               = "2.19.0"
+default['conda']['beam']['python']['version']     = node['conda']['beam']['version'] + ".0"
 # either 'pip' or 'git'
 default["conda"]["hops-util-py"]["install-mode"]  = 'git'
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
-default["conda"]["hops-util-py"]["minor"]         = "3"
+default["conda"]["hops-util-py"]["minor"]         = "0"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
 default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
@@ -73,6 +77,10 @@ default['conda']['channels']['pytorch']           = ""
 default['conda']['use_defaults']                  = "true"
 default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h
 
+default['conda']['proxy']['http']                 = ""
+default['conda']['proxy']['https']                = ""
+
+default['pypi']['proxy']                          = ""
 default['pypi']['index']                          = ""
 default['pypi']['index-url']                      = ""
 default['pypi']['trusted-host']                   = ""
@@ -90,6 +98,5 @@ default['conda']['provided_lib_names']            =  node['conda']['additional_l
 default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
 
 default['conda']['jupyter']['version']['py3']            = "1.1.4"
-default['conda']['jupyter']['version']['py2']            = "0.33.12"
 ## Hopsworks version of JupyterLab-Git pluging, last digit is Hopsworks version
 default['conda']['jupyter']['jupyterlab-git']['version'] = "0.8.1.2"

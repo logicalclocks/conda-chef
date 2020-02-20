@@ -26,7 +26,7 @@ channels:
 
 # Use symlinks in python interpreter paths
 envs_dirs: [ <%= node['conda']['base_dir'] %>/envs ]
-pkgs_dirs: [ <%= node['conda']['base_dir'] %>/pkgs ]
+pkgs_dirs: [ <%= @pkgs_dirs %> ]
 
 # Cache repodata information for faster envs creation/libs install
 local_repodata_ttl: <%= node['conda']['repodata_ttl'] %>
@@ -34,6 +34,17 @@ local_repodata_ttl: <%= node['conda']['repodata_ttl'] %>
 # Show channel URLs when displaying what is going to be downloaded
 # and in 'conda list'. The default is False.
 show_channel_urls: True
+
+<% if not (node['conda']['proxy']['http'].eql?("") and
+           node['conda']['proxy']['https'].eql?("")) %>
+proxy_servers:
+<% end -%>
+<% if not node['conda']['proxy']['http'].eql?("") %>
+  http: <%= node['conda']['proxy']['http'] %>
+<% end -%>
+<% if not node['conda']['proxy']['https'].eql?("") %>
+  https: <%= node['conda']['proxy']['https'] %>
+<% end -%>
 
 # For more information about this file see:
 # https://conda.io/docs/user-guide/configuration/use-condarc.html

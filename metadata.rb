@@ -4,7 +4,7 @@ maintainer_email  'jdowling@kth.se'
 license           'Apache v.2'
 description       'Installs/Configures conda'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           "1.1.0"
+version           "1.3.0"
 
 supports 'ubuntu', '= 14.04'
 supports 'ubuntu', '= 16.04'
@@ -69,10 +69,6 @@ attribute "install/ssl",
           :description => "Is SSL turned on for all services?",
           :type => "string"
 
-attribute "install/cleanup_downloads",
-          :description => "Remove any zipped binaries that were downloaded and used to install services",
-          :type => "string"
-
 attribute "install/addhost",
           :description => "Indicates that this host will be added to an existing Hops cluster.",
           :type => "string"
@@ -97,9 +93,22 @@ attribute "install/cloud",
           :description => "Set to '' for no cloud provider. Valid values are: 'aws', 'gce', 'azure'.",
           :type => 'string'
 
+attribute "install/kubernetes",
+          :description => "Set to true if you want to deploy the kubernetes enterprise edition. Default is 'fasle'",
+          :type => 'string'
+
 attribute "install/aws/instance_role",
           :description => "Set to true if using AWS and authorization should be done using the instance role",
           :type => 'string'
+    
+attribute "install/sudoers/scripts_dir",
+          :description => "Location for the Hopsworks script requiring sudoers, (default: /srv/hops/sbin)",
+          :type => 'string'
+
+attribute "install/sudoers/rules",
+          :description => "Whether or not to add the rules in /etc/sudoers.d/, (default: true)",
+          :type => 'string'
+
 
 attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
@@ -113,8 +122,20 @@ attribute "conda/use_defaults",
           :description => "whether or not to add the defaults mirrors to the channels list (default yes)",
           :type => "string"
 
+attribute "conda/proxy/http",
+          :description => "Proxy configuration for conda (http)",
+          :type => "string"
+
+attribute "conda/proxy/https",
+          :description => "Proxy configuration for conda (https)",
+          :type => "string"
+
 attribute "conda/default_libs",
           :description => "Space separated list of libraries to be installed in Conda root environment",
+          :type => "string"
+
+attribute "pypi/proxy",
+          :description => "HTTP proxy for fetching libraries from PyPI",
           :type => "string"
 
 attribute "pypi/index",
