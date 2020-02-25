@@ -97,6 +97,9 @@ default['conda']['provided_lib_names']            =  node['conda']['additional_l
 # Comma separated list of preinstalled libraries users are not able to uninstall
 default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
 
-default['conda']['jupyter']['version']['py3']            = "1.1.4"
+default['conda']['jupyter']['version']['py3']                   = "1.1.4"
+default['conda']["jupyter"]["notebook"]["version"]              = "6.0.3"
+default['conda']["jupyter"]["tornado"]["version"]               = "6.0.3"
+default['conda']["jupyter"]["prompt-toolkit"]["version"]        = "3.0.3"
 ## Hopsworks version of JupyterLab-Git pluging, last digit is Hopsworks version
 default['conda']['jupyter']['jupyterlab-git']['version'] = "0.8.1.2"
