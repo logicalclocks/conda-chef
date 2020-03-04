@@ -65,6 +65,10 @@ attribute "install/enterprise/password",
           :description => "Password for protected artifacts",
           :type => "string"
 
+attribute "install/bind_services_private_ip",
+          :description => "Flag to bind services to their private IP instead of 0.0.0.0 Default is false",
+          :type => "string"
+
 attribute "install/ssl",
           :description => "Is SSL turned on for all services?",
           :type => "string"

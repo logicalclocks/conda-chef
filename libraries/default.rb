@@ -6,6 +6,10 @@ class CondaHelpers
   def is_upgrade
     not @node['install']['current_version'].empty?
   end
+
+  def bind_services_private_ip
+    @node['install']['bind_services_private_ip'].strip.casecmp?('true')
+  end
 end
 
 class Chef
