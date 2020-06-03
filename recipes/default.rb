@@ -19,25 +19,6 @@ group hops_group do
   not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
 
-#
-# Install libraries into the root environment
-#
-for lib in node["conda"]["default_libs"] do
-  bash "install_anconda_default_libs" do
-    user node['conda']['user']
-    group node['conda']['group']
-    umask "022"
-    environment ({'HOME' => "/home/#{node['conda']['user']}"})
-    cwd "/home/#{node['conda']['user']}"
-    code <<-EOF
-      #{node['conda']['base_dir']}/bin/conda install -q -y #{lib}
-    EOF
-# The guard checks if the library is installed. Be careful with library names like 'sphinx' and 'sphinx_rtd_theme' - add space so that 'sphinx' doesnt match both.
-    not_if  "#{node['conda']['base_dir']}/bin/conda list | grep \"#{lib}\"", :user => node['conda']['user']
-  end
-end
-
-
 bash "create_base" do
   user node['conda']['user']
   group node['conda']['group']

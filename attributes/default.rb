@@ -51,11 +51,10 @@ default['install']['bind_services_private_ip']    = "false"
 default['conda']['version']                       = "2020.02"
 # the version of python: either '2' or '3'
 default['conda']['python']                        = "3"
-default['conda']['nvidia-ml-py']['version']       = "7.352.0"
-default['conda']['pydoop']['version']             = "2.0.0"
 default['conda']['beam']['version']               = "2.19.0"
-default['conda']['beam']['python']['version']     = node['conda']['beam']['version'] + ".0"
-# either 'pip' or 'git'
+default['conda']['pydoop']['version']             = "2.0.0"
+default['conda']['nvidia-ml-py']['version']       = "7.352.0"
+
 default["conda"]["hops-util-py"]["install-mode"]  = 'git'
 default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
@@ -75,7 +74,6 @@ default['conda']['home']                          = "#{node['conda']['dir']}/ana
 default['conda']['base_dir']                      = "#{node['conda']['dir']}/anaconda"
 
 default['conda']['channels']['default_mirrors']   = ""
-default['conda']['channels']['pytorch']           = ""
 default['conda']['use_defaults']                  = "true"
 default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h
 
@@ -87,21 +85,5 @@ default['pypi']['index']                          = ""
 default['pypi']['index-url']                      = ""
 default['pypi']['trusted-host']                   = ""
 
-default["conda"]["default_libs"]                  = %w{ }
-#numpy hdfs3 scikit-learn matplotlib pandas
-
-
-# Additional libs will be installed (in tensorflow::default.rb) for the base environments
-default['conda']['additional_libs']               = ""
-# Comma separated list of preinstalled libraries users are able to uninstall
-default['conda']['libs']                          = "hops, pandas, numpy, matplotlib, maggy, tqdm, Flask, scikit-learn, avro, seaborn, confluent-kafka, hops-petastorm, opencv-python, tfx, tensorflow-model-analysis, pytorch, torchvision"
-default['conda']['provided_lib_names']            =  node['conda']['additional_libs'].empty? ? node['conda']['libs'] : "#{node['conda']['libs']}, #{node['conda']['additional_libs']}"
 # Comma separated list of preinstalled libraries users are not able to uninstall
 default['conda']['preinstalled_lib_names']        = "tensorflow, pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
-
-default['conda']['jupyter']['version']['py3']                   = "1.1.4"
-default['conda']["jupyter"]["notebook"]["version"]              = "6.0.3"
-default['conda']["jupyter"]["tornado"]["version"]               = "6.0.3"
-default['conda']["jupyter"]["prompt-toolkit"]["version"]        = "3.0.3"
-## Hopsworks version of JupyterLab-Git pluging, last digit is Hopsworks version
-default['conda']['jupyter']['jupyterlab-git']['version'] = "0.8.1.2"
