@@ -39,6 +39,8 @@ default["rhel"]["epel"]                           = "true"
 default['install']['user']                        = ""
 default["install"]["external_users"]              = "false"
 
+default["download_url"]                           = "https://repo.hops.works/master"
+
 default['install']['enterprise']['install']       = "false"
 default['install']['enterprise']['download_url']  = nil
 default['install']['enterprise']['username']      = nil
@@ -63,8 +65,7 @@ default["conda"]["hops-util-py"]["minor"]         = "0"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
 default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
 
-# node['download_url'] is not set unless overwritten in the cluster definition. If it's not overwritten, download the artifact from snurran
-default['conda']['url']                           = node.attribute?(:download_url) ? node['download_url'] + "/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh" : "http://snurran.sics.se/hops/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh"
+default['conda']['url']                           = node['download_url'] + "/Anaconda#{node['conda']['python']}-#{node['conda']['version']}-Linux-x86_64.sh"
 
 default['conda']['user']                          = node['install']['user'].empty? ? 'anaconda' : node['install']['user']
 default['conda']['group']                         = node['install']['user'].empty? ? 'anaconda' : node['install']['user']
