@@ -113,13 +113,8 @@ attribute "install/sudoers/rules",
           :description => "Whether or not to add the rules in /etc/sudoers.d/, (default: true)",
           :type => 'string'
 
-
 attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
-          :type => "string"
-
-attribute "conda/channels/pytorch",
-          :description => "channel to use for pytorch packages",
           :type => "string"
 
 attribute "conda/use_defaults",
@@ -154,63 +149,6 @@ attribute "pypi/trusted-host",
           :description => "Trusted host for non https pypi mirrors",
           :type => "string"
 
-attribute "conda/libs",
-          :description => "Comma separated list of provided library names we install for the base conda envs",
-          :type => "string"
-
-attribute "conda/additional_libs",
-          :description => "Comma separated list of additional provided library names we install for the base conda envs",
-          :type => "string"
-
 attribute "conda/preinstalled_lib_names",
           :description => "Comma separated list of preinstalled libraries users should not touch",
           :type => "string"
-
-attribute "conda/hops-util-py/install-mode",
-          :description => "The mode for installing hops-util-py, either 'pip' to install a specific version or 'git' to install a specific branch",
-          :type => "string"
-
-attribute "conda/hops-util-py/branch",
-          :description => "The branch to install hops-util-py from git",
-          :type => "string"
-
-attribute "conda/hops-util-py/repo",
-          :description => "The repository where to install hops-util-py from git, e.g if you want to install logicalclocks/hops-util/py, set this string to 'logicalclocks'",
-          :type => "string"
-
-attribute "conda/hops-util-py/version",
-          :description => "The version to install hops-util-py from pip",
-          :type => "string"
-
-attribute "conda/hops-util-py/minor",
-          :description => "The bugfix version for hops-util-py",
-          :type => "string"
-
-attribute "conda/pydoop/version",
-          :description => "Pydoop version to install in python base environments",
-          :type => "string"
-
-attribute "conda/nvidia-ml-py/version",
-          :description => "nvidia-ml-py version to install in python base environments",
-          :type => "string"
-
-attribute "conda/jupyter/jupyterlab-git/version",
-          :description => "Version of Hopsworks version of jupyterlab-git plugin",
-          :type => 'string'
-
-attribute "conda/jupyter/version/py3",
-          :description => "Version of jupyterlab to install",
-          :type => 'string'
-
-attribute "conda/jupyter/notebook/version",
-          :description => "Version of notebook to install",
-          :type => 'string'
-
-attribute "conda/jupyter/tornado/version",
-          :description => "Version of tornado to install",
-          :type => 'string'
-
-attribute "conda/jupyter/prompt-toolkit/version",
-          :description => "Version of prompt-toolkit to install",
-          :type => 'string'
-
