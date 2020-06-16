@@ -156,3 +156,11 @@ attribute "conda/preinstalled_lib_names",
 attribute "hops/group_id",
           :description => "the group_id for hops/group. If you change this value you must ensure that it match the gid in the docker image",
           :type => 'string'
+        
+attribute "install/managed_docker_registry",
+          :description => "A switch to enable preparations for managed docker registry.",
+          :type => 'string'
+
+attribute "install/managed_kubernetes",
+          :description => "A switch to enable preparations for managed kubernetes.",
+          :type => 'string'
