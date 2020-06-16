@@ -48,6 +48,8 @@ default['install']['enterprise']['password']      = nil
 
 default['install']['bind_services_private_ip']    = "false"
 
+default['hops']['group_id']                       = 1234
+
 ############################ END GLOBAL ATTRIBUTES #######################################
 
 default['conda']['version']                       = "2020.02"
