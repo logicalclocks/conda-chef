@@ -152,3 +152,7 @@ attribute "pypi/trusted-host",
 attribute "conda/preinstalled_lib_names",
           :description => "Comma separated list of preinstalled libraries users should not touch",
           :type => "string"
+
+attribute "hops/group_id",
+          :description => "the group_id for hops/group. If you change this value you must ensure that it match the gid in the docker image",
+          :type => 'string'
