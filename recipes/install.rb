@@ -6,6 +6,10 @@ if node['platform_family'].eql?("rhel") && node['rhel']['epel'].downcase == "tru
   package "epel-release"
 end
 
+if node['platform_family'].eql?("rhel")
+  package "bind-utils"
+end
+
 package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"]
 
 group node['conda']['group']
