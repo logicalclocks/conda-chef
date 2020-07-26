@@ -52,7 +52,7 @@ default['hops']['group_id']                       = 1234
 
 ############################ END GLOBAL ATTRIBUTES #######################################
 
-default['conda']['version']                       = "2020.02"
+default['conda']['version']                       = "2020.07"
 # the version of python: either '2' or '3'
 default['conda']['python']                        = "3"
 default['conda']['beam']['version']               = "2.19.0"
