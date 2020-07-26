@@ -48,7 +48,7 @@ default['install']['bind_services_private_ip']    = "false"
 
 ############################ END GLOBAL ATTRIBUTES #######################################
 
-default['conda']['version']                       = "2020.02"
+default['conda']['version']                       = "2020.07"
 # the version of python: either '2' or '3'
 default['conda']['python']                        = "3"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
