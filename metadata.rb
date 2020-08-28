@@ -169,3 +169,10 @@ attribute "conda/max_env_yml_byte_size",
           :description => "Maximum size of a conda yml file that may be used to create an environment.",
           :type => 'string'
 
+################################ Begin installation wide attributes ########################################
+
+attribute "conda/docker/image-validation-regex",
+          :description => "Validation regex for user/project Docker image name",
+          :type => 'string'
+
+################################ end installation wide attributes   ########################################

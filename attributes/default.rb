@@ -96,3 +96,6 @@ default['pypi']['trusted-host']                   = ""
 default['conda']['preinstalled_lib_names']        = "tensorflow, pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
 
 default['conda']['max_env_yml_byte_size']         = "20000"
+
+# Regular expression to sanitize projects Docker images
+default['conda']['docker']['image-validation-regex'] = "^([a-z0-9]+(-[a-z0-9]+)*\.)*[a-z0-9]+(:[0-9]*)?(\/([a-zA-Z0-9\-]*))?\/([-:._a-zA-Z0-9]{0,62}[-:.a-zA-Z0-9]$)"
