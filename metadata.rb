@@ -164,3 +164,8 @@ attribute "install/managed_docker_registry",
 attribute "install/managed_kubernetes",
           :description => "A switch to enable preparations for managed kubernetes.",
           :type => 'string'
+
+attribute "conda/max_env_yml_byte_size",
+          :description => "Maximum size of a conda yml file that may be used to create an environment.",
+          :type => 'string'
+

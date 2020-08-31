@@ -94,3 +94,5 @@ default['pypi']['trusted-host']                   = ""
 
 # Comma separated list of preinstalled libraries users are not able to uninstall
 default['conda']['preinstalled_lib_names']        = "tensorflow, pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
+
+default['conda']['max_env_yml_byte_size']         = "20000"
