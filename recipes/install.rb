@@ -182,22 +182,7 @@ directory "/home/#{node['conda']['user']}/.conda/pkgs" do
   group node['conda']['group']
 end
 
-
 file "/home/#{node['conda']['user']}/.conda/environments.txt" do
   user node['conda']['user']
   group node['conda']['group']
-end
-
-bash "update_conda" do
-  user node['conda']['user']
-  group node['conda']['group']
-  environment ({'HOME' => "/home/#{node['conda']['user']}"})
-  cwd "/home/#{node['conda']['user']}"
-  retries 1
-  retry_delay 10
-  code <<-EOF
-    #{node['conda']['base_dir']}/bin/conda install --no-deps pycryptosat libcryptominisat
-    #{node['conda']['base_dir']}/bin/conda config --set sat_solver pycryptosat
-    #{node['conda']['base_dir']}/bin/conda update anaconda -y -q
-  EOF
 end
