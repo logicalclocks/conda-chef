@@ -59,7 +59,7 @@ default['hops']['group_id']                       = "1234"
 default['conda']['version']                       = "4.8.3"
 default['conda']['python']                        = "py37"
 
-default['conda']['beam']['version']               = "2.19.0"
+default['conda']['beam']['version']               = "2.24.0"
 default['conda']['pydoop']['version']             = "2.0.0"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 
