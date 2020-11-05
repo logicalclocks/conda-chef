@@ -29,7 +29,7 @@ default["install"]["current_version"]             = ""
 default["install"]["version"] = "2.0.0-SNAPSHOT"
 
 # List of released versions
-default["install"]["versions"] = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1,0.10.0,1.0.0,1.1.0,1.2.0,1.3.0,1.4.0"
+default["install"]["versions"] = "0.1.0,0.2.0,0.3.0,0.4.0,0.4.1,0.4.2,0.5.0,0.6.0,0.6.1,0.7.0,0.8.0,0.8.1,0.9.0,0.9.1,0.10.0,1.0.0,1.1.0,1.2.0,1.3.0,1.4.0,1.4.1"
 
 
 # These are global attributes which are inherited by all the cookbooks and therefore availabel
@@ -59,7 +59,7 @@ default['hops']['group_id']                       = "1234"
 default['conda']['version']                       = "4.8.3"
 default['conda']['python']                        = "py37"
 
-default['conda']['beam']['version']               = "2.19.0"
+default['conda']['beam']['version']               = "2.24.0"
 default['conda']['pydoop']['version']             = "2.0.0"
 default['conda']['nvidia-ml-py']['version']       = "7.352.0"
 
@@ -93,7 +93,7 @@ default['pypi']['index-url']                      = ""
 default['pypi']['trusted-host']                   = ""
 
 # Comma separated list of preinstalled libraries users are not able to uninstall
-default['conda']['preinstalled_lib_names']        = "tensorflow, pydoop, pyspark, tensorboard, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
+default['conda']['preinstalled_lib_names']        = "pydoop, pyspark, jupyterlab, sparkmagic, hdfscontents, pyjks, hops-apache-beam, pyopenssl"
 
 default['conda']['max_env_yml_byte_size']         = "20000"
 
