@@ -108,32 +108,6 @@ link node['conda']['base_dir'] do
   to node['conda']['home']
 end
 
-['envs', 'pkgs'].each do |d|
-  bash 'run_conda_installer_#{d}' do
-    user "root"
-    umask "022"
-    code <<-EOF
-      set -e
-      if [ ! -d #{node['conda']['dir']}/#{d} ] ; then    # if a new install, mv out envs/libs to keep when upgrading
-          mv #{node['conda']['home']}/#{d} #{node['conda']['dir']}
-          chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['dir']}/#{d}
-      else  # this is an upgrade, keep existing installed libs/envs/etc
-          # Copy what there is in pkgs dir, if it's not a link.
-          if [ "#{d}" == "pkgs" ] && [ ! -L #{node['conda']['home']}/#{d} ];
-          then
-            rsync -a #{node['conda']['home']}/#{d}/* #{node['conda']['dir']}/#{d}
-          fi
-          rm -rf #{node['conda']['home']}/#{d}
-      fi
-    EOF
-  end
-  link "#{node['conda']['home']}/#{d}" do
-    owner node['conda']['user']
-    group node['conda']['group']
-    to "#{node['conda']['dir']}/#{d}"
-  end
-end
-
 magic_shell_environment 'PATH' do
   value "$PATH:#{node['conda']['base_dir']}/bin"
 end
