@@ -4,6 +4,13 @@ default["install"]["ssl"]                         = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
 
+# Generate and setup ssh access among machine
+#
+# WARNING: This is big security hole
+#
+default["install"]["dev_ssh_keys"]                = "false"
+
+
 # Valid values are 'aws', 'gcp', 'azure'
 default["install"]["cloud"]                       = ""
 
