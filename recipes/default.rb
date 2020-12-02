@@ -17,6 +17,7 @@ group hops_group do
   members ["#{node['conda']['user']}"]
   append true
   not_if { node['install']['external_users'].casecmp("true") == 0 }
+  only_if "getent group #{hops_group}"
 end
 
 bash "create_base" do
@@ -31,6 +32,8 @@ bash "create_base" do
   not_if "test -d #{node['conda']['base_dir']}/envs/#{node['conda']['user']}", :user => node['conda']['user']
 end
 
+kagent_disabled = node['kagent'].attribute?('enabled') && node['kagent']['enabled'].casecmp?("false")
+
 ## First we delete the current hops-system Anaconda environment, if it exists
 bash "remove_hops-system_env" do
   user 'root'
@@ -41,6 +44,7 @@ bash "remove_hops-system_env" do
     #{node['conda']['base_dir']}/bin/conda env remove -y -q -n hops-system
   EOF
   only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
+  not_if { kagent_disabled }
 end
 
 ## Bash resource in Chef is weird! It does not login
@@ -73,6 +77,7 @@ bash "create_hops-system_env" do
     fi
   EOF
   not_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
+  not_if { kagent_disabled }
 end
 
 bash "update_pip_hops-system_env" do
@@ -84,7 +89,8 @@ bash "update_pip_hops-system_env" do
   code <<-EOF
     #{node['conda']['base_dir']}/envs/hops-system/bin/pip install --upgrade pip       
   EOF
-  only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']  
+  only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
+  not_if { kagent_disabled }
 end
 
 ## kagent_utils directory is not accessible by conda user
@@ -98,4 +104,5 @@ bash "install_kagent_utils" do
     chown -R #{node['conda']['user']}:#{node['conda']['group']} #{node['conda']['base_dir']}/envs/hops-system
   EOF
   only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
+  not_if { kagent_disabled }
 end
