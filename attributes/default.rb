@@ -86,6 +86,9 @@ default['conda']['dir']                           = node['install']['dir'].empty
 
 default['conda']['home']                          = "#{node['conda']['dir']}/anaconda-#{node['conda']['python']}-#{node['conda']['version']}"
 default['conda']['base_dir']                      = "#{node['conda']['dir']}/anaconda"
+# full/minimal
+# minimal is used in managed NDB nodes
+default['conda']['hops-system']['installation-mode'] = "full"
 
 default['conda']['channels']['default_mirrors']   = ""
 default['conda']['use_defaults']                  = "true"

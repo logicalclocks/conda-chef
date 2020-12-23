@@ -117,6 +117,10 @@ attribute "install/sudoers/rules",
           :description => "Whether or not to add the rules in /etc/sudoers.d/, (default: true)",
           :type => 'string'
 
+attribute "conda/hops-system/installation-mode",
+          :description => "Installation mode of hops-system Conda environment. Legal values: full [default]/minimal",
+          :type => 'string'
+
 attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
           :type => "string"
