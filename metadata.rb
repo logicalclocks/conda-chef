@@ -4,7 +4,7 @@ maintainer_email  'jdowling@kth.se'
 license           'Apache v.2'
 description       'Installs/Configures conda'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           "2.1.0"
+version           "2.2.0"
 
 supports 'ubuntu', '= 14.04'
 supports 'ubuntu', '= 16.04'
