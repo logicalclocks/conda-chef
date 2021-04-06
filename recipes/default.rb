@@ -93,7 +93,7 @@ bash "update_pip_hops-system_env" do
   environment ({'HOME' => "/home/#{node['conda']['user']}"})
   cwd "/home/#{node['conda']['user']}"
   code <<-EOF
-    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install --upgrade pip       
+    #{node['conda']['base_dir']}/envs/hops-system/bin/pip install --upgrade setuptools==44.1.1 pip
   EOF
   only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
 end
