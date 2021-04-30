@@ -11,7 +11,7 @@ supports 'ubuntu', '= 16.04'
 supports 'centos', '= 7.2'
 
 depends 'magic_shell', '~> 1.0.0'
-depends 'java', '~> 7.0.0'
+depends 'java'
 depends 'ulimit'
 
 recipe "conda::install", "Installs  conda"
