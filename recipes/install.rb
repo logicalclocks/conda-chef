@@ -32,6 +32,14 @@ directory node['install']['dir'] do
   not_if { ::File.directory?(node['install']['dir']) }
 end
 
+directory node['data']['dir'] do
+  owner 'root'
+  group 'root'
+  mode '0775'
+  action :create
+  not_if { ::File.directory?(node['data']['dir']) }
+end
+
 directory node['conda']['dir']  do
   owner node['conda']['user']
   group node['conda']['group']
