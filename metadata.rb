@@ -153,6 +153,10 @@ attribute "pypi/index-url",
           :description => "Mirror endpoint for PIP install and PIP actions which use PEP503 compliant API",
           :type => "string"
 
+attribute "pypi/extra-index-url",
+          :description => "Extra-index-url to add to the pip.conf files",
+          :type => "string"
+
 attribute "pypi/trusted-host",
           :description => "Trusted host for non https pypi mirrors",
           :type => "string"
