@@ -100,6 +100,7 @@ default['conda']['proxy']['https']                = ""
 default['pypi']['proxy']                          = ""
 default['pypi']['index']                          = ""
 default['pypi']['index-url']                      = ""
+default['pypi']['extra-index-url']                = ""
 default['pypi']['trusted-host']                   = ""
 
 # Comma separated list of preinstalled libraries users are not able to uninstall

@@ -7,6 +7,11 @@ index = <%= node['pypi']['index'] %>
 index-url = <%= node['pypi']['index-url'] %>
 <% end -%>
 
+<% if not node['pypi']['extra-index-url'].eql?("") %>
+extra-index-url = <% node['pypi']['extra-index-url'].split(',').each do |idx| %>
+   <%= idx %><% end -%>
+<% end -%>
+
 <% if not node['pypi']['trusted-host'].eql?("") %>
 trusted-host = <%= node['pypi']['trusted-host'] %>
 <% end -%>
