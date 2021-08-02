@@ -42,7 +42,11 @@ attribute "conda/group",
           :type => 'string'
 
 attribute "install/dir",
-          :description => "Default ''. Set to a base directory under which all hops services will be installed.",
+          :description => "Default '/srv/hops'. Set to a base directory under which all hops services will be installed.",
+          :type => "string"
+
+attribute "data/dir",
+          :description => "Default '/srv/hopsworks-data'. Set to a base directory under which all Hopsworks services will store their data and other state.",
           :type => "string"
 
 attribute "install/user",
