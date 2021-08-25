@@ -82,7 +82,9 @@ default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] +
 default['conda']['url']                           = node['download_url'] + "/Miniconda3-#{node['conda']['python']}_#{node['conda']['version']}-Linux-x86_64.sh"
 
 default['conda']['user']                          = node['install']['user'].empty? ? 'anaconda' : node['install']['user']
+default['conda']['user_id']                       = '1511'
 default['conda']['group']                         = node['install']['user'].empty? ? 'anaconda' : node['install']['user']
+default['conda']['group_id']                      = '1507'
 
 default['conda']['dir']                           = node['install']['dir'].empty? ? "/srv/hops/anaconda" : node['install']['dir'] + "/anaconda"
 

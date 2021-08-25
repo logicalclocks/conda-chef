@@ -37,8 +37,16 @@ attribute "conda/user",
           :description => "User that runs conda",
           :type => 'string'
 
+attribute "conda/user_id",
+          :description => "conda user id. Default: 1511",
+          :type => 'string'
+
 attribute "conda/group",
           :description => "Group that runs conda",
+          :type => 'string'
+
+attribute "conda/group_id",
+          :description => "conda group id. Default: 1507",
           :type => 'string'
 
 attribute "install/dir",
