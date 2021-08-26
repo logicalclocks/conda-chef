@@ -12,8 +12,15 @@ end
 
 package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"]
 
-group node['conda']['group']
+group node['conda']['group'] do
+  gid node['conda']['group_id']
+  action :create
+  not_if "getent group #{node['conda']['group']}"
+  not_if { node['install']['external_users'].casecmp("true") == 0 }
+end
+
 user node['conda']['user'] do
+  uid node['conda']['user_id']
   gid node['conda']['group']
   manage_home true
   home "/home/#{node['conda']['user']}"
