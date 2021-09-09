@@ -197,8 +197,6 @@ attribute "logger/group_id",
           :description => "groiup id of the logger/user defined above",
           :type => 'string'
 
-
-
 attribute "install/managed_docker_registry",
           :description => "A switch to enable preparations for managed docker registry.",
           :type => 'string'
