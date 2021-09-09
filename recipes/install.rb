@@ -31,6 +31,15 @@ user node['conda']['user'] do
   not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
 
+user node['logger']['user'] do
+  uid node['logger']['user_id']
+  shell "/bin/nologin"
+  action :create
+  system true
+  not_if "getent passwd #{node['logger']['user']}"
+  not_if { node['install']['external_users'].casecmp("true") == 0 }
+end
+
 directory node['install']['dir'] do
   owner 'root'
   group 'root'
