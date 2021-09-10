@@ -66,7 +66,7 @@ default['hops']['group_id']                       = "1234"
 default['logger']['user']                         = "logger"
 default['logger']['user_id']                      = "1524"
 default['logger']['group']                        = "logger"
-default['logger']['group_id']                     = "1518"
+default['logger']['group_id']                     = "1519"
 
 ############################ END GLOBAL ATTRIBUTES #######################################
 
