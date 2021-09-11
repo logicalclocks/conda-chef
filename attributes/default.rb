@@ -59,6 +59,8 @@ default['install']['enterprise']['download_url']  = nil
 default['install']['enterprise']['username']      = nil
 default['install']['enterprise']['password']      = nil
 
+default['install']['python']['version']           = "3.7"
+
 default['install']['bind_services_private_ip']    = "false"
 
 default['hops']['group_id']                       = "1234"
