@@ -73,7 +73,7 @@ default['logger']['group_id']                     = "1519"
 ############################ END GLOBAL ATTRIBUTES #######################################
 
 default['conda']['version']                       = "4.8.3"
-default['conda']['python']                        = "py37"
+default['conda']['python']                        = "py" + "#{node['install']['python']['version']}".sub('.',"")
 
 default['conda']['beam']['version']               = "2.24.0"
 default['conda']['pydoop']['version']             = "2.0.0"
