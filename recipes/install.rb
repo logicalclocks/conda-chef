@@ -7,7 +7,7 @@ if node['platform_family'].eql?("rhel") && node['rhel']['epel'].downcase == "tru
 end
 
 if node['platform_family'].eql?("rhel")
-  package "bind-utils"
+  package ["bind-utils", "libtirpc-devel"]
 end
 
 package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"]
