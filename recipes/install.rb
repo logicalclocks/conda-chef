@@ -69,7 +69,7 @@ remote_file installer_path do
 end
 
 # Template condarc to set mirrors/channels
-template "#{::Dir.home(node['conda']['user'])}/.condarc" do
+template "/home/#{node['conda']['user']}/.condarc" do
   source "condarc.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -80,13 +80,13 @@ template "#{::Dir.home(node['conda']['user'])}/.condarc" do
 end
 
 # PIP mirror configuration
-directory "#{::Dir.home(node['conda']['user'])}/.pip" do
+directory "/home/#{node['conda']['user']}/.pip" do
   user node['conda']['user']
   group node['conda']['group']
   action :create
 end
 
-template "#{::Dir.home(node['conda']['user'])}/.pip/pip.conf" do
+template "/home/#{node['conda']['user']}/.pip/pip.conf" do
   source "pip.conf.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -94,13 +94,13 @@ template "#{::Dir.home(node['conda']['user'])}/.pip/pip.conf" do
 end
 
 # Root because kagent env is installed as root
-directory "#{::Dir.home('root')}/.pip" do
+directory "/root/.pip" do
   user 'root'
   group 'root'
   action :create
 end
 
-template "#{::Dir.home('root')}/.pip/pip.conf" do
+template "/root/.pip/pip.conf" do
   source "pip.conf.erb"
   user "root"
   group "root"
@@ -147,7 +147,7 @@ else
   conda_mirrors = []
 end
 
-template "#{::Dir.home(node['conda']['user'])}/hops-system-environment.yml" do
+template "/home/#{node['conda']['user']}/hops-system-environment.yml" do
   source "hops-system-environment.yml.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -157,7 +157,7 @@ template "#{::Dir.home(node['conda']['user'])}/hops-system-environment.yml" do
             })
 end
 
-template "#{::Dir.home(node['conda']['user'])}/minimal-hops-system-environment.yml" do
+template "/home/#{node['conda']['user']}/minimal-hops-system-environment.yml" do
   source "minimal-hops-system-environment.yml.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -171,17 +171,17 @@ end
 # it is supposed to automatically create them, but it's very unpredictable when it comes to do so
 # so we create them manually here
 
-directory "#{::Dir.home(node['conda']['user'])}/.conda" do
+directory "/home/#{node['conda']['user']}/.conda" do
   user node['conda']['user']
   group node['conda']['group']
 end
 
-directory "#{::Dir.home(node['conda']['user'])}/.conda/pkgs" do
+directory "/home/#{node['conda']['user']}/.conda/pkgs" do
   user node['conda']['user']
   group node['conda']['group']
 end
 
-file "#{::Dir.home(node['conda']['user'])}/.conda/environments.txt" do
+file "/home/#{node['conda']['user']}/.conda/environments.txt" do
   user node['conda']['user']
   group node['conda']['group']
 end
