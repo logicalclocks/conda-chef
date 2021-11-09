@@ -7,7 +7,7 @@ if node['platform_family'].eql?("rhel") && node['rhel']['epel'].downcase == "tru
 end
 
 if node['platform_family'].eql?("rhel")
-  package "bind-utils"
+  package ["bind-utils", "libtirpc-devel"]
 end
 
 package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"]
@@ -69,7 +69,7 @@ remote_file installer_path do
 end
 
 # Template condarc to set mirrors/channels
-template "/home/#{node['conda']['user']}/.condarc" do
+template "#{::Dir.home(node['conda']['user'])}/.condarc" do
   source "condarc.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -80,13 +80,13 @@ template "/home/#{node['conda']['user']}/.condarc" do
 end
 
 # PIP mirror configuration
-directory "/home/#{node['conda']['user']}/.pip" do
+directory "#{::Dir.home(node['conda']['user'])}/.pip" do
   user node['conda']['user']
   group node['conda']['group']
   action :create
 end
 
-template "/home/#{node['conda']['user']}/.pip/pip.conf" do
+template "#{::Dir.home(node['conda']['user'])}/.pip/pip.conf" do
   source "pip.conf.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -94,13 +94,13 @@ template "/home/#{node['conda']['user']}/.pip/pip.conf" do
 end
 
 # Root because kagent env is installed as root
-directory "/root/.pip" do
+directory "#{::Dir.home('root')}/.pip" do
   user 'root'
   group 'root'
   action :create
 end
 
-template "/root/.pip/pip.conf" do
+template "#{::Dir.home('root')}/.pip/pip.conf" do
   source "pip.conf.erb"
   user "root"
   group "root"
@@ -147,7 +147,7 @@ else
   conda_mirrors = []
 end
 
-template "/home/#{node['conda']['user']}/hops-system-environment.yml" do
+template "#{::Dir.home(node['conda']['user'])}/hops-system-environment.yml" do
   source "hops-system-environment.yml.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -157,7 +157,7 @@ template "/home/#{node['conda']['user']}/hops-system-environment.yml" do
             })
 end
 
-template "/home/#{node['conda']['user']}/minimal-hops-system-environment.yml" do
+template "#{::Dir.home(node['conda']['user'])}/minimal-hops-system-environment.yml" do
   source "minimal-hops-system-environment.yml.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -171,17 +171,17 @@ end
 # it is supposed to automatically create them, but it's very unpredictable when it comes to do so
 # so we create them manually here
 
-directory "/home/#{node['conda']['user']}/.conda" do
+directory "#{::Dir.home(node['conda']['user'])}/.conda" do
   user node['conda']['user']
   group node['conda']['group']
 end
 
-directory "/home/#{node['conda']['user']}/.conda/pkgs" do
+directory "#{::Dir.home(node['conda']['user'])}/.conda/pkgs" do
   user node['conda']['user']
   group node['conda']['group']
 end
 
-file "/home/#{node['conda']['user']}/.conda/environments.txt" do
+file "#{::Dir.home(node['conda']['user'])}/.conda/environments.txt" do
   user node['conda']['user']
   group node['conda']['group']
 end

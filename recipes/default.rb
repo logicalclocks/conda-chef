@@ -24,8 +24,8 @@ bash "create_base" do
   user node['conda']['user']
   group node['conda']['group']
   umask "022"
-  environment ({'HOME' => "/home/#{node['conda']['user']}"})
-  cwd "/home/#{node['conda']['user']}"
+  environment ({'HOME' => ::Dir.home(node['conda']['user'])})
+  cwd ::Dir.home(node['conda']['user'])
   code <<-EOF
     #{node['conda']['base_dir']}/bin/conda create -n #{node['conda']['user']}
   EOF
@@ -39,7 +39,7 @@ bash "remove_hops-system_env" do
   user 'root'
   group 'root'
   umask "022"
-  cwd "/home/#{node['conda']['user']}"
+  cwd ::Dir.home(node['conda']['user'])
   code <<-EOF
     #{node['conda']['base_dir']}/bin/conda env remove -y -q -n hops-system
   EOF
@@ -67,7 +67,11 @@ bash "create_hops-system_env" do
   user 'root'
   group 'root'
   umask "022"
-  cwd "/home/#{node['conda']['user']}"
+  cwd ::Dir.home(node['conda']['user'])
+  environment (node['platform_family'].eql?("rhel") ? {
+    'CXXFLAGS':'-I/usr/include/tirpc',
+    'CFLAGS':'-I/usr/include/tirpc'
+  } : {})
   code <<-EOF
     set -e
     su #{node['conda']['user']} -c "HADOOP_HOME=#{node['install']['dir']}/hadoop PATH=#{node['install']['dir']}/hadoop/bin:$PATH \
@@ -90,8 +94,8 @@ bash "update_pip_hops-system_env" do
   user node['conda']['user']
   group node['conda']['group']
   umask "022"
-  environment ({'HOME' => "/home/#{node['conda']['user']}"})
-  cwd "/home/#{node['conda']['user']}"
+  environment ({'HOME' => ::Dir.home(node['conda']['user'])})
+  cwd ::Dir.home(node['conda']['user'])
   code <<-EOF
     #{node['conda']['base_dir']}/envs/hops-system/bin/pip install --upgrade setuptools==44.1.1 pip
   EOF
