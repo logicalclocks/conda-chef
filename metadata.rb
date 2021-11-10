@@ -105,6 +105,10 @@ attribute "install/localhost",
           :description => "Set to 'true' for a localhost installation. Default is 'false'",
           :type => 'string'
 
+attribute "install/homes_directory",
+          :description => "Parent directory for all homes. Default: /home",
+          :type => 'string'
+
 attribute "install/dev_ssh_keys",
           :description => "Use only for development. It will generate ssh keys and set authorized_keys. Default: false",
           :type => 'string'

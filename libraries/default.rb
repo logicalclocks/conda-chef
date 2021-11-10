@@ -10,6 +10,19 @@ class CondaHelpers
   def bind_services_private_ip
     @node['install']['bind_services_private_ip'].strip.casecmp?('true')
   end
+
+  def get_user_home(login_username)
+    begin
+      return ::Dir.home login_username
+    rescue
+      homes = @node['install']['homes_directory']
+      if homes.empty?
+        raise "Attribute install/homes_directory cannot be empty"
+      end
+      return ::File.join(homes, login_username)
+    end
+  end
+
 end
 
 class Chef
