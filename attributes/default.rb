@@ -3,6 +3,7 @@
 default["install"]["ssl"]                         = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
+default['install']['homes_directory']             = "/home"
 
 # Generate and setup ssh access among machine
 #
