@@ -15,14 +15,14 @@ class CondaHelpers
     begin
       return ::Dir.home login_username
     rescue
-      homes = node['install']['homes_directory']
+      homes = @node['install']['homes_directory']
       if homes.empty?
         raise "Attribute install/homes_directory cannot be empty"
       end
       return ::File.join(homes, login_username)
     end
   end
-  
+
 end
 
 class Chef
