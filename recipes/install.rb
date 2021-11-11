@@ -68,8 +68,10 @@ remote_file installer_path do
   action :create_if_missing
 end
 
+conda_user_home = conda_helpers.get_user_home(node['conda']['user'])
+
 # Template condarc to set mirrors/channels
-template "/home/#{node['conda']['user']}/.condarc" do
+template "#{conda_user_home}/.condarc" do
   source "condarc.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -80,13 +82,13 @@ template "/home/#{node['conda']['user']}/.condarc" do
 end
 
 # PIP mirror configuration
-directory "/home/#{node['conda']['user']}/.pip" do
+directory "#{conda_user_home}/.pip" do
   user node['conda']['user']
   group node['conda']['group']
   action :create
 end
 
-template "/home/#{node['conda']['user']}/.pip/pip.conf" do
+template "#{conda_user_home}/.pip/pip.conf" do
   source "pip.conf.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -147,7 +149,7 @@ else
   conda_mirrors = []
 end
 
-template "/home/#{node['conda']['user']}/hops-system-environment.yml" do
+template "#{conda_user_home}/hops-system-environment.yml" do
   source "hops-system-environment.yml.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -157,7 +159,7 @@ template "/home/#{node['conda']['user']}/hops-system-environment.yml" do
             })
 end
 
-template "/home/#{node['conda']['user']}/minimal-hops-system-environment.yml" do
+template "#{conda_user_home}/minimal-hops-system-environment.yml" do
   source "minimal-hops-system-environment.yml.erb"
   user node['conda']['user']
   group node['conda']['group']
@@ -171,17 +173,17 @@ end
 # it is supposed to automatically create them, but it's very unpredictable when it comes to do so
 # so we create them manually here
 
-directory "/home/#{node['conda']['user']}/.conda" do
+directory "#{conda_user_home}/.conda" do
   user node['conda']['user']
   group node['conda']['group']
 end
 
-directory "/home/#{node['conda']['user']}/.conda/pkgs" do
+directory "#{conda_user_home}/.conda/pkgs" do
   user node['conda']['user']
   group node['conda']['group']
 end
 
-file "/home/#{node['conda']['user']}/.conda/environments.txt" do
+file "#{conda_user_home}/.conda/environments.txt" do
   user node['conda']['user']
   group node['conda']['group']
 end

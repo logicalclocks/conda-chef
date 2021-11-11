@@ -20,12 +20,14 @@ group hops_group do
   only_if "getent group #{hops_group}"
 end
 
+conda_user_home = conda_helpers.get_user_home(node['conda']['user'])
+
 bash "create_base" do
   user node['conda']['user']
   group node['conda']['group']
   umask "022"
-  environment ({'HOME' => "/home/#{node['conda']['user']}"})
-  cwd "/home/#{node['conda']['user']}"
+  environment ({'HOME' => conda_user_home})
+  cwd conda_user_home
   code <<-EOF
     #{node['conda']['base_dir']}/bin/conda create -n #{node['conda']['user']}
   EOF
@@ -39,7 +41,7 @@ bash "remove_hops-system_env" do
   user 'root'
   group 'root'
   umask "022"
-  cwd "/home/#{node['conda']['user']}"
+  cwd conda_user_home
   code <<-EOF
     #{node['conda']['base_dir']}/bin/conda env remove -y -q -n hops-system
   EOF
@@ -67,7 +69,7 @@ bash "create_hops-system_env" do
   user 'root'
   group 'root'
   umask "022"
-  cwd "/home/#{node['conda']['user']}"
+  cwd conda_user_home
   environment (node['platform_family'].eql?("rhel") ? {
     'CXXFLAGS':'-I/usr/include/tirpc',
     'CFLAGS':'-I/usr/include/tirpc'
@@ -94,8 +96,8 @@ bash "update_pip_hops-system_env" do
   user node['conda']['user']
   group node['conda']['group']
   umask "022"
-  environment ({'HOME' => "/home/#{node['conda']['user']}"})
-  cwd "/home/#{node['conda']['user']}"
+  environment ({'HOME' => conda_user_home})
+  cwd conda_user_home
   code <<-EOF
     #{node['conda']['base_dir']}/envs/hops-system/bin/pip install --upgrade setuptools==44.1.1 pip
   EOF
