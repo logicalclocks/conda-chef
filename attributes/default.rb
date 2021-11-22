@@ -69,6 +69,10 @@ default['logger']['user_id']                      = "1524"
 default['logger']['group']                        = "logger"
 default['logger']['group_id']                     = "1519"
 
+# Pypi library versions
+
+default['scikit-learn']['version']                = "0.22.2.post1"
+
 ############################ END GLOBAL ATTRIBUTES #######################################
 
 default['conda']['version']                       = "4.8.3"
