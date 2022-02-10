@@ -105,6 +105,7 @@ default['conda']['base_dir']                      = "#{node['conda']['dir']}/ana
 default['conda']['hops-system']['installation-mode'] = "full"
 
 default['conda']['channels']['default_mirrors']   = ""
+default['conda']['ssl_verify']                    = "true"
 default['conda']['use_defaults']                  = "true"
 default['conda']['repodata_ttl']                  = 43200 # Cache repodata information for 12h
 

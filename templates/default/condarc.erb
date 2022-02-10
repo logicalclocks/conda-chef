@@ -8,6 +8,8 @@
 # Non-url channels will be interpreted as Anaconda.org usernames
 # (this can be changed by modifying the channel_alias key; see below).
 # The default is just 'defaults'.
+ssl_verify: <%= node['conda']['ssl_verify'] %>
+
 channels:
 <% if not node['conda']['channels']['default_mirrors'].eql?("") %>
 <% node['conda']['channels']['default_mirrors'].split(',').each do |channel| %>
