@@ -141,6 +141,10 @@ attribute "conda/channels/default_mirrors",
           :description => "comma separated list of anaconda mirrors",
           :type => "string"
 
+attribute "conda/ssl_verify",
+          :description => "Set ssl_verify option in condarc - default true",
+          :type => "string"
+
 attribute "conda/use_defaults",
           :description => "whether or not to add the defaults mirrors to the channels list (default yes)",
           :type => "string"
