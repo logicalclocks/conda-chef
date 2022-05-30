@@ -121,10 +121,6 @@ attribute "install/kubernetes",
           :description => "Set to true if you want to deploy the kubernetes enterprise edition. Default is 'fasle'",
           :type => 'string'
 
-attribute "install/aws/instance_role",
-          :description => "Set to true if using AWS and authorization should be done using the instance role",
-          :type => 'string'
-    
 attribute "install/sudoers/scripts_dir",
           :description => "Location for the Hopsworks script requiring sudoers, (default: /srv/hops/sbin)",
           :type => 'string'
