@@ -71,7 +71,7 @@ default['logger']['group_id']                     = "1519"
 
 # Pypi library versions
 
-default['scikit-learn']['version']                = "0.22.2.post1"  # this version needs to match the one set in docker-images (env.yml)
+default['scikit-learn']['version']                = "1.1.1"  # this version needs to match the one set in docker-images (env.yml)
 
 ############################ END GLOBAL ATTRIBUTES #######################################
 
