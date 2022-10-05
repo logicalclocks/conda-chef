@@ -5,6 +5,9 @@ default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
 default['install']['homes_directory']             = "/home"
 
+# Default empty means that the services won't be configured to use a different temp directory
+default['install']['tmp_directory']               = ""
+
 # Generate and setup ssh access among machine
 #
 # WARNING: This is big security hole
