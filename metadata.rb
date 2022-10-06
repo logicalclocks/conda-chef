@@ -109,6 +109,10 @@ attribute "install/homes_directory",
           :description => "Parent directory for all homes. Default: /home",
           :type => 'string'
 
+attribute "install/tmp_directory",
+          :description => " Directory mounted with executable privileges to use as temp dir. Default to /tmp",
+          :type => 'string'
+
 attribute "install/dev_ssh_keys",
           :description => "Use only for development. It will generate ssh keys and set authorized_keys. Default: false",
           :type => 'string'
