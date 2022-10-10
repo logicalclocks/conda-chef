@@ -16,12 +16,6 @@ channels:
   - <%= channel %>
 <% end -%>
 <% end -%>
-<% if not node['conda']['channels']['pytorch'].eql?("") %>
-  - <%= node['conda']['channels']['pytorch'] %>
-<% end -%>
-<% if node['conda']['channels']['pytorch'].eql?("") %>
-  - https://conda.anaconda.org/pytorch/
-<% end -%>
 <% if node['conda']['use_defaults'].eql?("true") %>
   - defaults
 <% end -%>
