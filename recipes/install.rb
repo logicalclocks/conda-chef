@@ -109,12 +109,18 @@ template "#{::Dir.home('root')}/.pip/pip.conf" do
   mode 0755
 end
 
+conda_install_environment = {}
+if not node['install']['tmp_directory'].eql?("")
+  conda_install_environment = {'TMPDIR' => node['install']['tmp_directory']}
+end
+
 bash 'run_conda_installer' do
   user node['conda']['user']
   group node['conda']['group']
   umask "022"
+  environment (conda_install_environment)
   code <<-EOF
-   #{installer_path} -b -p #{node['conda']['home']}
+    #{installer_path} -b -p #{node['conda']['home']}
   EOF
   not_if { File.directory?(node['conda']['home']) }
 end
@@ -127,20 +133,6 @@ end
 
 magic_shell_environment 'PATH' do
   value "$PATH:#{node['conda']['base_dir']}/bin"
-end
-
-
-ulimit_domain node['conda']['user'] do
-  rule do
-    item :nice
-    type :hard
-    value -10
-  end
-  rule do
-    item :nice
-    type :soft
-    value -10
-  end
 end
 
 if node[:conda][:channels].attribute?(:default_mirrors)
