@@ -60,6 +60,9 @@ default['install']['enterprise']['install']       = "false"
 default['install']['enterprise']['download_url']  = nil
 default['install']['enterprise']['username']      = nil
 default['install']['enterprise']['password']      = nil
+# Global flag to disable modifying SELinux
+default["install"]["modify_selinux"]              = "true"
+
 
 default['install']['bind_services_private_ip']    = "false"
 
