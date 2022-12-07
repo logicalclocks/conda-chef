@@ -3,14 +3,23 @@ if node['kernel']['machine'] != 'x86_64'
 end
 
 if node['platform_family'].eql?("rhel") && node['rhel']['epel'].downcase == "true"
-  package "epel-release"
+  package "epel-release" do
+    retries 10
+    retry_delay 30
+  end
 end
 
 if node['platform_family'].eql?("rhel")
-  package ["bind-utils", "libtirpc-devel"]
+  package ["bind-utils", "libtirpc-devel"] do
+    retries 10
+    retry_delay 30
+  end
 end
 
-package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"]
+package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"] do
+  retries 10
+  retry_delay 30
+end
 
 group node['conda']['group'] do
   gid node['conda']['group_id']
