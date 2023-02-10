@@ -16,6 +16,32 @@ if node['platform_family'].eql?("rhel")
   end
 end
 
+if node['platform_family'].eql?("debian")
+  glibc_gnu_c_libraries = "#{Chef::Config['file_cache_path']}/glibc-2.23-x86_64-1.txz"
+  glibc_extract_dir = "#{Chef::Config['file_cache_path']}/glibc_gnu_c_libraries"
+  remote_file glibc_gnu_c_libraries do
+    source node['conda']['glibc_gnu_c_libraries']
+    user "root"
+    group "root"
+    action :create
+  end
+
+  directory glibc_extract_dir do
+    owner "root"
+    group "root"
+    mode "755"
+  end
+
+  bash "install_glibc_gnu_c_libraries" do
+    user 'root'
+    group 'root'
+    code <<-EOH
+        tar xvf #{glibc_gnu_c_libraries} -C #{glibc_extract_dir}
+        cp #{glibc_extract_dir}/usr/include/rpc/* /usr/include/rpc/
+    EOH
+  end
+end
+
 package ["bzip2", "vim", "iftop", "htop", "iotop", "rsync"] do
   retries 10
   retry_delay 30
