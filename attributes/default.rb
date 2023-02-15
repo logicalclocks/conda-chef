@@ -129,5 +129,3 @@ default['conda']['max_env_yml_byte_size']         = "20000"
 
 # Regular expression to sanitize projects Docker images
 default['conda']['docker']['image-validation-regex'] = "^([a-z0-9]+(-[a-z0-9]+)*\.)*[a-z0-9]+(:[0-9]*)?(\/([a-zA-Z0-9\-]*))?\/([-:._a-zA-Z0-9]{0,127}[-:.a-zA-Z0-9]$)"
-
-default['conda']['glibc_gnu_c_libraries']         = "https://repo.hops.works/dev/gibson/glibc-2.23-x86_64-1.txz"
