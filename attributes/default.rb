@@ -91,7 +91,7 @@ default["conda"]["hops-util-py"]["branch"]        = "master"
 default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
 default["conda"]["hops-util-py"]["minor"]         = "0"
 # last digit is the bugfix version, assuming a version format of X.X.X.X
-default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
+default["conda"]["hops-util-py"]["version"]       = "3.1.0.0"
 
 default['conda']['url']                           = node['download_url'] + "/Miniconda3-#{node['conda']['python']}_#{node['conda']['version']}-Linux-x86_64.sh"
 
