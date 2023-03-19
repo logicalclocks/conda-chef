@@ -70,10 +70,10 @@ bash "create_hops-system_env" do
   group 'root'
   umask "022"
   cwd conda_user_home
-  environment (node['platform_family'].eql?("rhel") ? {
+  environment ({
     'CXXFLAGS':'-I/usr/include/tirpc',
     'CFLAGS':'-I/usr/include/tirpc'
-  } : {})
+  })
   code <<-EOF
     set -e
     su #{node['conda']['user']} -c "HADOOP_HOME=#{node['install']['dir']}/hadoop PATH=#{node['install']['dir']}/hadoop/bin:$PATH \
