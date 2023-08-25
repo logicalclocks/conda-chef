@@ -34,8 +34,6 @@ bash "create_base" do
   not_if "test -d #{node['conda']['base_dir']}/envs/#{node['conda']['user']}", :user => node['conda']['user']
 end
 
-kagent_disabled = node['kagent'].attribute?('enabled') && node['kagent']['enabled'].casecmp?("false")
-
 ## First we delete the current hops-system Anaconda environment, if it exists
 bash "remove_hops-system_env" do
   user 'root'
