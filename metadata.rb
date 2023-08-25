@@ -220,6 +220,11 @@ attribute "conda/max_env_yml_byte_size",
           :description => "Maximum size of a conda yml file that may be used to create an environment.",
           :type => 'string'
 
+attribute "consul/enabled",
+          :description => "Whether or not consul is enabled on the cluster and Hopsworks should use it (Default: true)",
+          :type => 'string'
+
+
 ################################ Begin installation wide attributes ########################################
 
 attribute "conda/docker/image-validation-regex",
