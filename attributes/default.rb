@@ -73,6 +73,8 @@ default['logger']['user_id']                      = "1524"
 default['logger']['group']                        = "logger"
 default['logger']['group_id']                     = "1519"
 
+default['consul']['enabled']			  = "true"
+
 # Pypi library versions
 
 default['scikit-learn']['version']                = "1.1.1"  # this version needs to match the one set in docker-images (env.yml)
