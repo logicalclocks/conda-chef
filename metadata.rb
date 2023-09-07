@@ -112,6 +112,10 @@ attribute "install/homes_directory",
           :description => "Parent directory for all homes. Default: /home",
           :type => 'string'
 
+attribute "install/secondary_region",
+          :description => "If true we are deploying a secondary replicated region. We should skip certain setup operations (Default: False)",
+          :type => 'string'
+
 attribute "install/tmp_directory",
           :description => " Directory mounted with executable privileges to use as temp dir. Default to /tmp",
           :type => 'string'

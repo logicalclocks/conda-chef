@@ -4,6 +4,7 @@ default["install"]["ssl"]                         = "false"
 default["install"]["addhost"]                     = "false"
 default["install"]["localhost"]                   = "false"
 default['install']['homes_directory']             = "/home"
+default['install']['secondary_region']            = "false"
 
 # Default empty means that the services won't be configured to use a different temp directory
 default['install']['tmp_directory']               = ""
