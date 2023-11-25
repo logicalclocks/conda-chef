@@ -1,25 +1,3 @@
-include_recipe "java"
-
-# User anaconda needs access to bin/hadoop to install Pydoop
-# This is a hack to get the hadoop group.
-# Hadoop group is created in hops::install *BUT*
-# Karamel does NOT respect dependencies among install recipies
-# so it has to be here and it has to be dirty (Antonis)
-hops_group = "hadoop"
-if node.attribute?("hops")
-  if node['hops'].attribute?("group")
-    hops_group = node['hops']['group']
-  end
-end
-
-group hops_group do
-  action :modify
-  members ["#{node['conda']['user']}"]
-  append true
-  not_if { node['install']['external_users'].casecmp("true") == 0 }
-  only_if "getent group #{hops_group}"
-end
-
 conda_user_home = conda_helpers.get_user_home(node['conda']['user'])
 
 bash "create_base" do
@@ -46,23 +24,6 @@ bash "remove_hops-system_env" do
   only_if "test -d #{node['conda']['base_dir']}/envs/hops-system", :user => node['conda']['user']
 end
 
-## Bash resource in Chef is weird! It does not login
-## as the user specifed in 'user' property, nor setup
-## the correct environment variables such as USER,
-## LOGNAME, USERNAME etc. In order to install Pydoop
-## user should have read access to bin/hadoop binary.
-## We could have set all the required env vars to anaconda
-## but then we would also need to get somehow the hadoop group.
-## We cannon include hops-hadoop-chef attribute as there will
-## be cyclic dependencies, so this is the only solution that works.
-if node['conda']['hops-system']['installation-mode'].casecmp?("full")
-  environment_file = "hops-system-environment.yml"
-elsif node['conda']['hops-system']['installation-mode'].casecmp?("minimal")
-  environment_file = "minimal-hops-system-environment.yml"
-else
-  raise "Illegal conda/hops-system/installation-mode value"
-end
-
 bash "create_hops-system_env" do
   user 'root'
   group 'root'
@@ -74,8 +35,7 @@ bash "create_hops-system_env" do
   })
   code <<-EOF
     set -e
-    su #{node['conda']['user']} -c "HADOOP_HOME=#{node['install']['dir']}/hadoop PATH=#{node['install']['dir']}/hadoop/bin:$PATH \
-       #{node['conda']['base_dir']}/bin/conda env create -q --file #{environment_file}"
+    su #{node['conda']['user']} -c "#{node['conda']['base_dir']}/bin/conda env create -q --file hops-system-environment.yml"
 
     export HOPS_UTIL_PY_VERSION=#{node['conda']['hops-util-py']['version']}
     export HOPS_UTIL_PY_BRANCH=#{node['conda']['hops-util-py']['branch']}
