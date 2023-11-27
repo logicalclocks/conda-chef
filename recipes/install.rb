@@ -160,16 +160,6 @@ template "#{conda_user_home}/hops-system-environment.yml" do
             })
 end
 
-template "#{conda_user_home}/minimal-hops-system-environment.yml" do
-  source "minimal-hops-system-environment.yml.erb"
-  user node['conda']['user']
-  group node['conda']['group']
-  mode 0750
-  variables({
-              :conda_mirrors => conda_mirrors
-            })
-end
-
 # Conda needs the .conda directory, the .conda/pkgs directory and the .conda/environments.txt file
 # it is supposed to automatically create them, but it's very unpredictable when it comes to do so
 # so we create them manually here
