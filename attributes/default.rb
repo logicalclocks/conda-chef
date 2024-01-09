@@ -21,7 +21,7 @@ default["install"]["dev_ssh_keys"]                = "false"
 # Valid values are 'aws', 'gcp', 'azure'
 default["install"]["cloud"]                       = ""
 
-default["install"]["aws"]["docker"]["ecr-login_dir"]  = "/root/.docker-ecr-login/"
+default["install"]["cloud_docker_helper_dir"]  = "/root/.docker-login-helper"
 
 default['install']['managed_docker_registry']         = "false"
 default['install']['managed_kubernetes']              = "false"
