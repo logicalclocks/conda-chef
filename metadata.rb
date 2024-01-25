@@ -80,6 +80,10 @@ attribute "install/modify_selinux",
           :description => "Global flag to disable modifying SELinux ie consul-chef. Default: true",
           :type => "string"
 
+attribute "install/systemd/after",
+          :description => "Arbitrary whitespace separated systemd units to be put in After directive of Hopsworks systemd units",
+          :type => "string"
+
 attribute "install/bind_services_private_ip",
           :description => "Flag to bind services to their private IP instead of 0.0.0.0 Default is false",
           :type => "string"

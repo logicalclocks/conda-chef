@@ -66,6 +66,7 @@ default['install']['enterprise']['password']      = nil
 # Global flag to disable modifying SELinux
 default["install"]["modify_selinux"]              = "true"
 
+default["install"]["systemd"]["after"]            = ""
 
 default['install']['bind_services_private_ip']    = "false"
 
