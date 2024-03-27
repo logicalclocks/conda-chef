@@ -84,35 +84,6 @@ default['scikit-learn']['version']                = "1.1.1"  # this version need
 
 ############################ END GLOBAL ATTRIBUTES #######################################
 
-default['conda']['version']                       = "4.8.3"
-default['conda']['python']                        = "py37"
-
-default['conda']['beam']['version']               = "2.24.0"
-default['conda']['pydoop']['version']             = "2.0.0"
-default['conda']['nvidia-ml-py']['version']       = "7.352.0"
-
-default["conda"]["hops-util-py"]["install-mode"] = "pip"
-default["conda"]["hops-util-py"]["branch"]        = "master"
-default["conda"]["hops-util-py"]["repo"]          = "logicalclocks"
-default["conda"]["hops-util-py"]["minor"]         = "0"
-# last digit is the bugfix version, assuming a version format of X.X.X.X
-default["conda"]["hops-util-py"]["version"]       = node["install"]["version"] + "." + node["conda"]["hops-util-py"]["minor"]
-
-default['conda']['url']                           = node['download_url'] + "/Miniconda3-#{node['conda']['python']}_#{node['conda']['version']}-Linux-x86_64.sh"
-
-default['conda']['user']                          = node['install']['user'].empty? ? 'anaconda' : node['install']['user']
-default['conda']['user_id']                       = '1511'
-default['conda']['group']                         = node['install']['user'].empty? ? 'anaconda' : node['install']['user']
-default['conda']['group_id']                      = '1507'
-
-default['conda']['dir']                           = node['install']['dir'].empty? ? "/srv/hops/anaconda" : node['install']['dir'] + "/anaconda"
-
-default['conda']['home']                          = "#{node['conda']['dir']}/anaconda-#{node['conda']['python']}-#{node['conda']['version']}"
-default['conda']['base_dir']                      = "#{node['conda']['dir']}/anaconda"
-# full/minimal
-# minimal is used in managed NDB nodes
-default['conda']['hops-system']['installation-mode'] = "full"
-
 default['conda']['channels']['default_mirrors']   = ""
 default['conda']['ssl_verify']                    = "true"
 default['conda']['use_defaults']                  = "true"
