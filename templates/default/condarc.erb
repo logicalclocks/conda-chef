@@ -20,10 +20,6 @@ channels:
   - defaults
 <% end -%>
 
-# Use symlinks in python interpreter paths
-envs_dirs: [ <%= node['conda']['base_dir'] %>/envs ]
-pkgs_dirs: [ <%= @pkgs_dirs %> ]
-
 # Cache repodata information for faster envs creation/libs install
 local_repodata_ttl: <%= node['conda']['repodata_ttl'] %>
 
